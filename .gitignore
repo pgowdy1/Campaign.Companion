@@ -5,3 +5,15 @@
 /Campaign.Companion/obj
 /Campaign.Companion/bin
 .vs
+
+Campaign\.Companion\.Models/bin/
+
+Campaign\.Companion\.Models/obj/
+
+Campaign\.Companion\.Storage/bin/
+
+Campaign\.Companion\.Storage/obj/
+
+Campaign\.Companion\.Tests/bin/
+
+Campaign\.Companion\.Tests/obj/

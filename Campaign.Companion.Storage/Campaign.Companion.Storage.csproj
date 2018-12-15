@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Campaign.Companion.Models\Campaign.Companion.Models.csproj" />
-    <ProjectReference Include="..\Campaign.Companion.Storage\Campaign.Companion.Storage.csproj" />
   </ItemGroup>
 
 </Project>
