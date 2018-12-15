@@ -1,0 +1,16 @@
+Campaign.Companion.Storage   		->	Campaign.Companion.Storage.SQL
+	Models						Repositories
+	RepositoryInterfaces
+
+Campaign.Companion
+	Business Objects/Domain Services
+
+Campaign.Companion.Validation
+
+Campaign.Companion.Communication   	->	Campaign.Companion.Communication.WebAPI
+	DTOs						Endpoints
+	Translation					Identity
+
+
+
+
