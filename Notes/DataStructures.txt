@@ -1,0 +1,29 @@
+Phase 1
+-------------------------------------------------------
+Nodes
+	Id
+	Name
+	ParentNode
+	Description
+	Type = Entity | Location | Tag
+	
+ConnectedNodes
+	Id
+	NodeId
+	NodeId
+
+Nodes_Tags
+	Id
+	NodeId
+	TagId
+
+AudioFiles_Nodes
+	Id
+	NodeId
+	AudioId
+
+AudioFiles
+	Id
+	Name
+	AutoPlay
+	Loop
