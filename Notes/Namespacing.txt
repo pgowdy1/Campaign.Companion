@@ -1,9 +1,12 @@
 Campaign.Companion.Storage   		->	Campaign.Companion.Storage.SQL
-	Models						Repositories
-	RepositoryInterfaces
+	RepositoryInterfaces				Repositories
+								SQLNodeRepository
+
+Campaign.Companion.Models
 
 Campaign.Companion
 	Business Objects/Domain Services
+	Models	
 
 Campaign.Companion.Validation
 
