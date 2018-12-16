@@ -10,7 +10,7 @@ namespace Campaign.Companion.Tests
 	public class NodeDomainServiceTests
 	{
 		private NodeDomainService _subject;
-		Mock<INodeRepository> _nodeRepository;
+		private Mock<INodeRepository> _nodeRepository;
 
 		[SetUp]
 		public void Setup()
