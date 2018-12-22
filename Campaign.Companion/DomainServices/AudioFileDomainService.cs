@@ -9,29 +9,29 @@ namespace Campaign.Companion.DomainServices
 	{
 		private IAudioFileRepository _audioFileRepository;
 
-		public AudioFileDomainService(IAudioFileRepository audioFileRepository)
+        public AudioFileDomainService(IAudioFileRepository audioFileRepository)
+        {
+            _audioFileRepository = audioFileRepository;
+        }
+
+		public AudioFile Add(AudioFile audioFile)
 		{
-			_audioFileRepository = audioFileRepository;
-		}
-		//Maybe this returns the Node we added? Talk to Trey about why or why not. 
-		public void Add(AudioFile node)
-		{
-			_audioFileRepository.Add(node);
+			return _audioFileRepository.Add(audioFile);
 		}
 
-		public void Delete(int nodeId)
+		public void Delete(int audioFileId)
 		{
-			_audioFileRepository.Delete(nodeId);
+			_audioFileRepository.Delete(audioFileId);
 		}
 
-		public void Update(int nodeId)
+		public void Update(AudioFile audioFile)
 		{
-			_audioFileRepository.Update(nodeId);
+			_audioFileRepository.Update(audioFile);
 		}
 
-		public AudioFile Read(int nodeId)
+		public AudioFile Read(int audioFileId)
 		{
-			return _audioFileRepository.Read(nodeId);
+			return _audioFileRepository.Read(audioFileId);
 		}
 	}
 }

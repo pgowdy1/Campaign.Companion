@@ -12,18 +12,14 @@ ConnectedNodes
 	NodeId
 	NodeId
 
-Nodes_Tags
-	Id
-	NodeId
-	TagId
-
-AudioFiles_Nodes
+NodeAudio
 	Id
 	NodeId
 	AudioId
+	AutoPlay
+	Loop
 
 AudioFiles
 	Id
 	Name
-	AutoPlay
-	Loop
+	

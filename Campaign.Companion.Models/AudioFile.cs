@@ -1,12 +1,12 @@
 ﻿using System;
+using System.IO;
 
 namespace Campaign.Companion
 {
 	public class AudioFile
 	{
-		private int Id;
-		private String Name;
-		private int AutoPlay;
-		private bool Loop; 
-	}
+		public int Id { get; set; }
+		public string Name { get; set; }
+        public Stream File { get; set; }
+    }
 }

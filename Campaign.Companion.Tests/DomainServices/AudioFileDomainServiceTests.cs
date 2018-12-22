@@ -38,8 +38,10 @@ namespace Campaign.Companion.Tests.DomainServices
 		[Test]
 		public void Update_ShouldCallRepository()
 		{
-			_subject.Update(1);
-			_audioFileRepo.Verify(m => m.Update(It.IsAny<int>()));
+            var expectedAudioFile = new AudioFile() { Id = 42 };
+
+            _subject.Update(expectedAudioFile);
+			_audioFileRepo.Verify(m => m.Update(expectedAudioFile));
 		}
 
 		[Test]

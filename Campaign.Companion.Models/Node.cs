@@ -4,10 +4,10 @@ namespace Campaign.Companion
 {
 	public class Node 
 	{
-		private int Id;
-		private String Name;
-		private int ParentNodeId;
-		private String Description;
-		private NodeType Type;
+		public int Id { get; set; }
+		public string Name { get; set; }
+		public int ParentNodeId { get; set; }
+		public string Description { get; set; }
+		public NodeType Type { get; set; }
 	}
 }
