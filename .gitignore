@@ -17,3 +17,7 @@ Campaign\.Companion\.Storage/obj/
 Campaign\.Companion\.Tests/bin/
 
 Campaign\.Companion\.Tests/obj/
+
+Campaign\.Companion\.Storage\.Azure/bin/
+
+Campaign\.Companion\.Storage\.Azure/obj/
