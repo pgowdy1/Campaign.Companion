@@ -1,9 +1,9 @@
 ﻿using Microsoft.WindowsAzure.Storage;
-using Microsoft.Azure;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.WindowsAzure.Storage.Table;
+using System.Configuration;
 
 namespace Campaign.Companion.Storage.Azure
 {
@@ -36,9 +36,10 @@ namespace Campaign.Companion.Storage.Azure
 
         public void CreateTableIfNotExist()
         {
+            var connectionString = ConfigurationManager.AppSettings.Get("StorageConnectionString");
+
             // Retrieve the storage account from the connection string.
-            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
-            CloudConfigurationManager.GetSetting("StorageConnectionString"));
+            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(connectionString);
 
             // Create the table client.
             CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
