@@ -3,6 +3,7 @@ using Campaign.Companion.Storage;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Campaign.Companion.DomainServices
 {
@@ -19,12 +20,12 @@ namespace Campaign.Companion.DomainServices
             _nodeAudioRepository = nodeAudioRepository;
         }
 
-		public Node Add(Node node)
+		public Task<Node> Add(Node node)
 		{
 			return _nodeRepository.Add(node);
 		}
 
-		public void Delete(int nodeId)
+		public void Delete(string nodeId)
 		{
 			_nodeRepository.Delete(nodeId);
 		}
@@ -34,14 +35,14 @@ namespace Campaign.Companion.DomainServices
 			_nodeRepository.Update(node);
 		}
 
-		public Node Read(int nodeId)
+		public async Task<Node> Read(string nodeId)
 		{
-			return _nodeRepository.Read(nodeId);
+			return await _nodeRepository.Read(nodeId);
 		}
 
-        public void ParentNode(int parentId, int childId)
+        public async Task ParentNode(string parentId, string childId)
         {
-            var child = _nodeRepository.Read(childId);
+            var child = await _nodeRepository.Read(childId);
 
             child.ParentNodeId = parentId;
 

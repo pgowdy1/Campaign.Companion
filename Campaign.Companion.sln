@@ -11,7 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Campaign.Companion.Storage"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Campaign.Companion.Models", "Campaign.Companion.Models\Campaign.Companion.Models.csproj", "{2F2A5FB0-1BD0-4CBC-8E07-6CFCAE487CA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Campaign.Companion.Storage.Azure", "Campaign.Companion.Storage.Azure\Campaign.Companion.Storage.Azure.csproj", "{4F06799A-5554-4D3D-AB20-DDF397B4F315}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Campaign.Companion.Storage.Azure", "Campaign.Companion.Storage.Azure\Campaign.Companion.Storage.Azure.csproj", "{4F06799A-5554-4D3D-AB20-DDF397B4F315}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Campaign.Companion.Storage.Azure.Tests.Integration", "Campaign.Companion.Storage.Azure.Tests.Integration\Campaign.Companion.Storage.Azure.Tests.Integration.csproj", "{D24CFCCF-EF21-4D50-8243-83BBBC20B5D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Campaign.Companion.Storage.Azure.Tests", "Campaign.Companion.Storage.Azure.Tests\Campaign.Companion.Storage.Azure.Tests.csproj", "{70B0AA0A-2212-4A77-93AE-2BCCFD4BEEB2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{4F06799A-5554-4D3D-AB20-DDF397B4F315}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F06799A-5554-4D3D-AB20-DDF397B4F315}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F06799A-5554-4D3D-AB20-DDF397B4F315}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D24CFCCF-EF21-4D50-8243-83BBBC20B5D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D24CFCCF-EF21-4D50-8243-83BBBC20B5D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D24CFCCF-EF21-4D50-8243-83BBBC20B5D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D24CFCCF-EF21-4D50-8243-83BBBC20B5D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70B0AA0A-2212-4A77-93AE-2BCCFD4BEEB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70B0AA0A-2212-4A77-93AE-2BCCFD4BEEB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70B0AA0A-2212-4A77-93AE-2BCCFD4BEEB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70B0AA0A-2212-4A77-93AE-2BCCFD4BEEB2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -21,3 +21,11 @@ Campaign\.Companion\.Tests/obj/
 Campaign\.Companion\.Storage\.Azure/bin/
 
 Campaign\.Companion\.Storage\.Azure/obj/
+
+Campaign\.Companion\.Storage\.Azure\.Tests/bin/
+
+Campaign\.Companion\.Storage\.Azure\.Tests/obj/
+
+Campaign\.Companion\.Storage\.Azure\.Tests\.Integration/bin/
+
+Campaign\.Companion\.Storage\.Azure\.Tests\.Integration/obj/

@@ -7,10 +7,15 @@ namespace Campaign.Companion.Storage.Azure
 {
     public class NodeEntity : TableEntity
     {
-        public NodeEntity(int nodeId, string partitionKey)
+		public string Name { get; set; }
+		public string ParentNodeId { get; set; }
+		public string Description { get; set; }
+		public NodeType Type { get; set; }
+
+		public NodeEntity(NodeType type)
         {
-            this.PartitionKey = partitionKey;
-            this.RowKey = nodeId.ToString();
+			this.PartitionKey = type.ToString();
+			this.RowKey = Guid.NewGuid().ToString();
         }
 
         public NodeEntity() { }

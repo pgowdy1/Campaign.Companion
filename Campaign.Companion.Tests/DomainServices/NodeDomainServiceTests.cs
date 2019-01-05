@@ -5,6 +5,7 @@ using Moq;
 using Campaign.Companion.Storage;
 using FluentAssertions;
 using Campaign.Companion.Models;
+using System.Threading.Tasks;
 
 namespace Campaign.Companion.Tests
 {
@@ -36,15 +37,15 @@ namespace Campaign.Companion.Tests
         [Test]
         public void Delete_ShouldCallRepository()
         {
-            _subject.Delete(1);
-            _nodeRepository.Verify(m => m.Delete(It.IsAny<int>()));
+            _subject.Delete("1");
+            _nodeRepository.Verify(m => m.Delete(It.IsAny<string>()));
         }
 
         [Test]
         public void Update_ShouldCallRepository()
         {
             // Setup
-            var expectedNode = new Node() { Id = 42 };
+            var expectedNode = new Node() { Id = "42" };
 
             // Act
             _subject.Update(expectedNode);
@@ -54,33 +55,33 @@ namespace Campaign.Companion.Tests
         }
 
         [Test]
-        public void Read_ShouldCallRepositoryAndReturnNode()
+        public async Task Read_ShouldCallRepositoryAndReturnNode()
         {
             // Setup
-            var expectedNode = new Node() { Id = 42 };
-            _nodeRepository.Setup(m => m.Read(42)).Returns(expectedNode);
+            var expectedNode = new Node() { Id = "42", Type = NodeType.Entity };
+            _nodeRepository.Setup(m => m.Read($"42")).ReturnsAsync(expectedNode);
 
             // Act
-            var result = _subject.Read(42);
+            var result = await _subject.Read("42");
 
             // Assert
-            _nodeRepository.Verify(m => m.Read(It.IsAny<int>()));
+            _nodeRepository.Verify(m => m.Read($"42"));
             result.Should().Be(expectedNode);
         }
 
         [Test]
-        public void ParentNode_ShouldAssignParentId()
+        public async Task ParentNode_ShouldAssignParentId()
         {
             // Setup
-            int parentId = 666;
-            Node childNode = new Node() { Id = 42 };
-            _nodeRepository.Setup(m => m.Read(42)).Returns(childNode);
+            string parentId = "666";
+            Node childNode = new Node() { Id = "42", Type = NodeType.Entity };
+            _nodeRepository.Setup(m => m.Read("42")).ReturnsAsync(childNode);
 
             // Act
-            _subject.ParentNode(parentId, childNode.Id);
+            await _subject.ParentNode(parentId, childNode.Id);
 
             // Assert
-            _nodeRepository.Verify(m => m.Update(It.Is<Node>(n => n.ParentNodeId == parentId)));
+            _nodeRepository.Verify(m => m.Update(It.Is<Node>(n => n.ParentNodeId == parentId && n.Id == "42")));
         }
 
         [Test]

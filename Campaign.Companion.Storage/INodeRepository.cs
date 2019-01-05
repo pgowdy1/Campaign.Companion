@@ -1,12 +1,13 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace Campaign.Companion.Storage
 {
 	public interface INodeRepository
 	{
-        Node Add(Node node);
-		void Delete(int nodeId);
+        Task<Node> Add(Node node);
+		void Delete(string nodeId);
 		void Update(Node node);
-		Node Read(int nodeId);
+		Task<Node> Read(string nodeId);
 	}
 }
