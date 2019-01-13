@@ -4,7 +4,9 @@ namespace Campaign.Companion.Storage.Azure
 {
 	public interface INodeEntityRepository
 	{
-		Task Add(NodeEntity node);
-		Task<NodeEntity> Read(string type, string nodeId);
+		Task<NodeEntity> Add(NodeEntity node);
+		Task<NodeEntity> Read(string partitionKey, string rowKey);
+		Task Delete(string partitionKey, string rowKey);
+		Task Update(NodeEntity node);
 	}
 }

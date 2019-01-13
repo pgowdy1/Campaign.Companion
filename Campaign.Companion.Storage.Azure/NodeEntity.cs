@@ -7,15 +7,33 @@ namespace Campaign.Companion.Storage.Azure
 {
     public class NodeEntity : TableEntity
     {
-		public string Name { get; set; }
-		public string ParentNodeId { get; set; }
-		public string Description { get; set; }
-		public NodeType Type { get; set; }
-
-		public NodeEntity(NodeType type)
+        public string Name { get; set; }
+        public string ParentNodeId { get; set; }
+        public string Description { get; set; }
+        
+        [IgnoreProperty]
+        public string Id
         {
-			this.PartitionKey = type.ToString();
-			this.RowKey = Guid.NewGuid().ToString();
+            get
+            {
+                return PartitionKey + "." + RowKey;
+            }
+        }
+
+		[IgnoreProperty]
+		public NodeType NodeType
+		{
+			get
+			{
+				return (NodeType)Enum.Parse(typeof(NodeType), PartitionKey);
+			}
+
+		}
+
+        public NodeEntity(NodeType type)
+        {
+            this.PartitionKey = type.ToString();
+            this.RowKey = Guid.NewGuid().ToString();
         }
 
         public NodeEntity() { }

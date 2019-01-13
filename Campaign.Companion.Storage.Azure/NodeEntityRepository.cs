@@ -8,32 +8,25 @@ using System.Threading.Tasks;
 
 namespace Campaign.Companion.Storage.Azure
 {
-    public class NodeEntityRepository : INodeEntityRepository
-    {
+	public class NodeEntityRepository : INodeEntityRepository
+	{
 		private CloudTable _cloudTable;
+		private readonly IConfigurationProvider _configurationProvider;
 
-        public NodeEntityRepository()
-        {
+		public NodeEntityRepository(IConfigurationProvider configurationProvider)
+		{
+			_configurationProvider = configurationProvider;
+
 			CreateTableIfNotExist();
 		}
 
-		public async Task Add(NodeEntity node)
+		public void CreateTableIfNotExist()
 		{
-			await _cloudTable.ExecuteAsync(TableOperation.Insert(node));
-		}
+			//  ConfigurationManager.AppSettings.Get("StorageConnectionString");
+			var connectionString = _configurationProvider.StorageConnectionString;
 
-		public async Task<NodeEntity> Read(string type, string nodeId)
-		{
-			TableResult tableResult = await _cloudTable.ExecuteAsync(TableOperation.Retrieve<NodeEntity>(type, nodeId));
-			return (NodeEntity)tableResult.Result;
-		}
-
-        public void CreateTableIfNotExist()
-        {
-            var connectionString = ConfigurationManager.AppSettings.Get("StorageConnectionString");
-
-            // Retrieve the storage account from the connection string.
-            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(connectionString);
+			// Retrieve the storage account from the connection string.
+			CloudStorageAccount storageAccount = CloudStorageAccount.Parse(connectionString);
 
 			// Create the table client.
 			CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
@@ -43,6 +36,31 @@ namespace Campaign.Companion.Storage.Azure
 
 			// Create the table if it doesn't exist.
 			_cloudTable.CreateIfNotExistsAsync().Wait();
+		}
+
+		public async Task<NodeEntity> Add(NodeEntity node)
+		{
+			TableResult tableResult = await _cloudTable.ExecuteAsync(TableOperation.Insert(node));
+			return (NodeEntity)tableResult.Result;
+		}
+
+		public async Task<NodeEntity> Read(string partitionKey, string rowKey)
+		{
+			TableResult tableResult = await _cloudTable.ExecuteAsync(TableOperation.Retrieve<NodeEntity>(partitionKey, rowKey));
+			return (NodeEntity)tableResult.Result;
+		}
+
+		public async Task Delete(string partitionKey, string rowKey)
+		{
+			var entity = new DynamicTableEntity(partitionKey, rowKey);
+			entity.ETag = "*";
+
+			await _cloudTable.ExecuteAsync(TableOperation.Delete(entity));
+		}
+
+		public async Task Update(NodeEntity node)
+		{
+			await _cloudTable.ExecuteAsync(TableOperation.Replace(node));
 		}
 	}
 }
