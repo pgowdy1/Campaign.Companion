@@ -54,7 +54,7 @@ namespace Campaign.Companion.DomainServices
             return await _connectedNodeRepository.ReadAll();
         }
 
-        public async Task<ConnectedNode> ConnectNodes(int firstNode, int secondNode)
+        public async Task<ConnectedNode> ConnectNodes(string firstNode, string secondNode)
         {
             ConnectedNode newNode = new ConnectedNode(firstNode, secondNode);
 

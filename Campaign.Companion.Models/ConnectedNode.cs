@@ -2,11 +2,11 @@
 {
 	public class ConnectedNode
 	{
-		public int Id { get; set; }
-        public int FirstNode { get; set; }
-        public int SecondNode { get; set; }
+		public string Id { get; set; }
+        public string FirstNode { get; set; }
+        public string SecondNode { get; set; }
 
-        public ConnectedNode(int firstNodeId, int secondNodeId)
+        public ConnectedNode(string firstNodeId, string secondNodeId)
         {
             FirstNode = firstNodeId;
             SecondNode = secondNodeId;
