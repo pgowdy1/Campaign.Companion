@@ -5,6 +5,7 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Campaign.Companion.Tests.DomainServices
 {
@@ -18,37 +19,37 @@ namespace Campaign.Companion.Tests.DomainServices
 		public void Setup()
 		{
 			_audioFileRepo = new Mock<IAudioFileRepository>();
-			_subject = new AudioFileDomainService(_audioFileRepo.Object); 
+			_subject = new AudioFileDomainService(_audioFileRepo.Object);
 		}
 
 		[Test]
-		public void Add_ShouldCallRepository()
+		public async Task Add_ShouldCallRepository()
 		{
-			_subject.Add(new AudioFile());
+			await _subject.Add(new AudioFile());
 			_audioFileRepo.Verify(m => m.Add(It.IsAny<AudioFile>()));
 		}
 
 		[Test]
-		public void Delete_ShouldCallRepository()
+		public async Task Delete_ShouldCallRepository()
 		{
-			_subject.Delete(1);
-			_audioFileRepo.Verify(m => m.Delete(It.IsAny<int>()));
+			await _subject.Delete("1");
+			_audioFileRepo.Verify(m => m.Delete("1"));
 		}
 
 		[Test]
-		public void Update_ShouldCallRepository()
+		public async Task Update_ShouldCallRepository()
 		{
-            var expectedAudioFile = new AudioFile() { Id = 42 };
+			var expectedAudioFile = new AudioFile() { Id = 42 };
 
-            _subject.Update(expectedAudioFile);
+			await _subject.Update(expectedAudioFile);
 			_audioFileRepo.Verify(m => m.Update(expectedAudioFile));
 		}
 
 		[Test]
-		public void Read_ShouldCallRepository()
+		public async Task Read_ShouldCallRepository()
 		{
-			_subject.Read(1);
-			_audioFileRepo.Verify(m => m.Read(It.IsAny<int>()));
+			await _subject.Read("1");
+			_audioFileRepo.Verify(m => m.Read("1"));
 		}
 
 	}

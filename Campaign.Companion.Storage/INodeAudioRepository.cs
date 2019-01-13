@@ -2,13 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Campaign.Companion.Storage
 {
     public interface INodeAudioRepository
     {
-        NodeAudio Add(NodeAudio nodeAudio);
-        NodeAudio Read(int nodeAudioId);
-        void Update(NodeAudio nodeAudio);
+		Task<NodeAudio> Add(NodeAudio nodeAudio);
+        Task<NodeAudio> Read(string nodeAudioId);
+        Task Update(NodeAudio nodeAudio);
     }
 }

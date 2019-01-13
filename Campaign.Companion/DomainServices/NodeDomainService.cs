@@ -20,19 +20,19 @@ namespace Campaign.Companion.DomainServices
             _nodeAudioRepository = nodeAudioRepository;
         }
 
-		public Task<Node> Add(Node node)
+		public async Task<Node> Add(Node node)
 		{
-			return _nodeRepository.Add(node);
+			return await _nodeRepository.Add(node);
 		}
 
-		public void Delete(string nodeId)
+		public async Task Delete(string nodeId)
 		{
-			_nodeRepository.Delete(nodeId);
+			await _nodeRepository.Delete(nodeId);
 		}
 
-		public void Update(Node node)
+		public async Task Update(Node node)
 		{
-			_nodeRepository.Update(node);
+			await _nodeRepository.Update(node);
 		}
 
 		public async Task<Node> Read(string nodeId)
@@ -46,44 +46,49 @@ namespace Campaign.Companion.DomainServices
 
             child.ParentNodeId = parentId;
 
-            _nodeRepository.Update(child);
+            await _nodeRepository.Update(child);
         }
 
-        public ConnectedNode[] GetConnections()
+        public async Task<ConnectedNode[]> GetConnections()
         {
-            return _connectedNodeRepository.ReadAll();
+            return await _connectedNodeRepository.ReadAll();
         }
 
-        public ConnectedNode ConnectNodes(int firstNode, int secondNode)
+        public async Task<ConnectedNode> ConnectNodes(int firstNode, int secondNode)
         {
             ConnectedNode newNode = new ConnectedNode(firstNode, secondNode);
 
-            return _connectedNodeRepository.Add(newNode);
+            return await _connectedNodeRepository.Add(newNode);
         }
 
-        public NodeAudio AddAudioFile(int nodeId, int audioId)
+        public async Task RemoveConnection(string connectionId)
+        {
+			await _connectedNodeRepository.Delete(connectionId);
+        }
+
+        public async Task<NodeAudio> AddAudioFile(int nodeId, int audioId)
         {
             NodeAudio nodeAudio = new NodeAudio(nodeId, audioId);
 
-            return _nodeAudioRepository.Add(nodeAudio);
+            return await _nodeAudioRepository.Add(nodeAudio);
         }
 
-        public void SetAudioFileShouldLoop(int nodeAudioId, bool shouldLoop)
+        public async Task SetAudioFileShouldLoop(string nodeAudioId, bool shouldLoop)
         {
-            var nodeAudio = _nodeAudioRepository.Read(nodeAudioId);
+            var nodeAudio = await _nodeAudioRepository.Read(nodeAudioId);
 
             nodeAudio.Loop = shouldLoop;
 
-            _nodeAudioRepository.Update(nodeAudio);
+			await _nodeAudioRepository.Update(nodeAudio);
         }
 
-        public void SetAudioFileShouldAutoPlay(int nodeAudioId, bool autoPlay)
+        public async Task SetAudioFileShouldAutoPlay(string nodeAudioId, bool autoPlay)
         {
-            var nodeAudio = _nodeAudioRepository.Read(nodeAudioId);
+            var nodeAudio = await _nodeAudioRepository.Read(nodeAudioId);
 
             nodeAudio.AutoPlay = autoPlay;
 
-            _nodeAudioRepository.Update(nodeAudio);
+			await _nodeAudioRepository.Update(nodeAudio);
         }
     }
 }

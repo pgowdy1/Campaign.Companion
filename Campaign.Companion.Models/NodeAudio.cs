@@ -6,7 +6,7 @@ namespace Campaign.Companion.Models
 {
     public class NodeAudio
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public int NodeId { get; set; }
         public int AudioId { get; set; }
         public bool AutoPlay { get; set; }
