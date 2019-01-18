@@ -10,6 +10,7 @@
         {
             FirstNode = firstNodeId;
             SecondNode = secondNodeId;
+			Id = firstNodeId + "." + secondNodeId;
         }
 	}
 }
