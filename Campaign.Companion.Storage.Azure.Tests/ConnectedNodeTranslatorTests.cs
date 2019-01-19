@@ -27,30 +27,24 @@ namespace Campaign.Companion.Storage.Azure.Tests
 			//Setup
 			ConnectedNode newConNode = new ConnectedNode("FirstNodeId", "SecondNodeId");
 
-			_connectedNodeRepo.Setup(m => m.Add(It.IsAny<ConnectedNodeEntity>())).ReturnsAsync(new ConnectedNodeEntity("ImAnTheFirstIdOfTheReturnFromTheRepo", "ImAnTheSecondIdOfTheReturnFromTheRepo")
-			{
-				PartitionKey = "ImAnTheFirstIdOfTheReturnFromTheRepo",
-				RowKey = "ImAnTheSecondIdOfTheReturnFromTheRepo"
-			});
+			_connectedNodeRepo.Setup(m => m.Add(It.IsAny<ConnectedNodeEntity>())).ReturnsAsync(new ConnectedNodeEntity("ImTheFirstIdOfTheReturnFromTheRepo", "ImTheSecondIdOfTheReturnFromTheRepo"));
 
 			//Act
 			var returnedNode = await _subject.Add(newConNode);
 
 			//Assert
 			_connectedNodeRepo.Verify(m => m.Add(It.Is<ConnectedNodeEntity>(n =>
-				n.FirstNode == "FirstNodeId" &&
 				n.PartitionKey == "FirstNodeId" &&
-				n.SecondNode == "SecondNodeId" &&
 				n.RowKey == "SecondNodeId"
 			)));
 
-			returnedNode.Id.Should().Be("ImAnTheFirstIdOfTheReturnFromTheRepo.ImAnTheSecondIdOfTheReturnFromTheRepo");
-			returnedNode.FirstNode.Should().Be("ImAnTheFirstIdOfTheReturnFromTheRepo");
-			returnedNode.SecondNode.Should().Be("ImAnTheSecondIdOfTheReturnFromTheRepo");
+			returnedNode.Id.Should().Be("ImTheFirstIdOfTheReturnFromTheRepo.ImTheSecondIdOfTheReturnFromTheRepo");
+			returnedNode.FirstNode.Should().Be("ImTheFirstIdOfTheReturnFromTheRepo");
+			returnedNode.SecondNode.Should().Be("ImTheSecondIdOfTheReturnFromTheRepo");
 		}
 
 		[Test]
-		public async Task Read_ShouldSuccessfullyReadTableEntity()
+		public async Task ReadAll_ShouldSuccessfullyReadTableEntity()
 		{
 			//Setup
 			_connectedNodeRepo.Setup(repo => repo.ReadAll()).ReturnsAsync(SetupArrayOfConnectedNodeEntities());
@@ -71,7 +65,7 @@ namespace Campaign.Companion.Storage.Azure.Tests
 		}
 
 		[Test]
-		public async Task Read_WhenNoRecordExists_ShouldReturnEmpty()
+		public async Task ReadAll_WhenNoRecordExists_ShouldReturnEmpty()
 		{
 			//Setup
 			_connectedNodeRepo.Setup(repo => repo.ReadAll()).ReturnsAsync(new ConnectedNodeEntity[0]);
@@ -101,16 +95,8 @@ namespace Campaign.Companion.Storage.Azure.Tests
 		{
 			ConnectedNodeEntity[] nodes = new ConnectedNodeEntity[]
 			{
-				new ConnectedNodeEntity("1stIdInTheFirstElement", "2ndIdInTheFirstElement")
-				{
-					PartitionKey = "1stIdInTheFirstElement",
-					RowKey = "2ndIdInTheFirstElement"
-				},
+				new ConnectedNodeEntity("1stIdInTheFirstElement", "2ndIdInTheFirstElement"),
 				new ConnectedNodeEntity("1stIdInTheSecondElement", "2ndIdInTheSecondElement")
-				{
-					PartitionKey = "1stIdInTheSecondElement",
-					RowKey = "2ndIdInTheSecondElement"
-				}
 			};
 
 			return nodes;

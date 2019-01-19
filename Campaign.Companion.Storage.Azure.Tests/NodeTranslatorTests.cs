@@ -63,7 +63,7 @@ namespace Campaign.Companion.Storage.Azure.Tests
 		public async Task Read_ShouldSuccessfullyReadTableEntity()
 		{
 			_nodeRepository.Setup(m => m.Read("Location", "Myers"))
-				.ReturnsAsync(new NodeEntity(NodeType.Location)
+				.ReturnsAsync(new NodeEntity(NodeType.Location.ToString())
 				{
 					PartitionKey = "Location",
 					RowKey = "Myers",

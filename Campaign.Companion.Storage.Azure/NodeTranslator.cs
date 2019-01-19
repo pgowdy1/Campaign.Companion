@@ -51,18 +51,18 @@ namespace Campaign.Companion.Storage.Azure
 
 			return new Node()
 			{
-				Id = entity.Id,
+				Id = entity.PartitionKey + "." + entity.RowKey,
 				Name = entity.Name,
 				ParentNodeId = entity.ParentNodeId,
 				Description = entity.Description,
-				Type = entity.NodeType
+				Type = (NodeType)Enum.Parse(typeof(NodeType), entity.PartitionKey)
 			};
 		}
 		private NodeEntity Convert(Node node)
 		{
 			if (string.IsNullOrWhiteSpace(node.Id))
 			{// New
-				return new NodeEntity(node.Type)
+				return new NodeEntity(node.Type.ToString())
 				{
 					Name = node.Name,
 					ParentNodeId = node.ParentNodeId,

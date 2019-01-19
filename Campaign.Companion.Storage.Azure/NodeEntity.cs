@@ -11,29 +11,10 @@ namespace Campaign.Companion.Storage.Azure
         public string ParentNodeId { get; set; }
         public string Description { get; set; }
         
-        [IgnoreProperty]
-        public string Id
+        public NodeEntity(string type)
         {
-            get
-            {
-                return PartitionKey + "." + RowKey;
-            }
-        }
-
-		[IgnoreProperty]
-		public NodeType NodeType
-		{
-			get
-			{
-				return (NodeType)Enum.Parse(typeof(NodeType), PartitionKey);
-			}
-
-		}
-
-        public NodeEntity(NodeType type)
-        {
-            this.PartitionKey = type.ToString();
-            this.RowKey = Guid.NewGuid().ToString();
+            PartitionKey = type.ToString();
+            RowKey = Guid.NewGuid().ToString();
         }
 
         public NodeEntity() { }

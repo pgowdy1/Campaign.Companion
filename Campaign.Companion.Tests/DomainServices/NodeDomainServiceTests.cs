@@ -168,7 +168,7 @@ namespace Campaign.Companion.Tests
 		public async Task GetConnections_ShouldCallRepository()
 		{
 			// Setup
-			var expectedConnections = new[] { new ConnectedNode("1", "2") { Id = "42" }, new ConnectedNode("3", "2") { Id = "43" } };
+			var expectedConnections = new[] { new ConnectedNode("1", "2"), new ConnectedNode("3", "2")};
 			_connectedNodeRepository.Setup(m => m.ReadAll()).ReturnsAsync(expectedConnections);
 
 			// Act

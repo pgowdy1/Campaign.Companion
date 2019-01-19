@@ -25,7 +25,7 @@ namespace Campaign.Companion.Storage.Azure.Tests.Integration
 		[Test]
 		public async Task Add_ShouldAdd()
 		{
-			var entityToSave = new NodeEntity(NodeType.Location)
+			var entityToSave = new NodeEntity(NodeType.Location.ToString())
 			{
 				Description = "UnitTest.Add",
 				Name = "Name",
@@ -34,7 +34,6 @@ namespace Campaign.Companion.Storage.Azure.Tests.Integration
 
 			var savedEntity = await _subject.Add(entityToSave);
 
-			savedEntity.Id.Should().Be(entityToSave.Id);
 			savedEntity.Description.Should().Be(entityToSave.Description);
 			savedEntity.Name.Should().Be(entityToSave.Name);
 			savedEntity.ParentNodeId.Should().Be(entityToSave.ParentNodeId); 
@@ -43,7 +42,7 @@ namespace Campaign.Companion.Storage.Azure.Tests.Integration
 		[Test]
 		public async Task Read_ShouldRead()
 		{
-			var entityToSave = new NodeEntity(NodeType.Location)
+			var entityToSave = new NodeEntity(NodeType.Location.ToString())
 			{
 				Description = "UnitTest.Read",
 				Name = "Name",
@@ -67,7 +66,7 @@ namespace Campaign.Companion.Storage.Azure.Tests.Integration
 		[Test]
 		public async Task Delete_ShouldDelete()
 		{
-			var entityToSave = new NodeEntity(NodeType.Location)
+			var entityToSave = new NodeEntity(NodeType.Location.ToString())
 			{
 				Description = "UnitTest.Delete",
 				Name = "Name",
@@ -86,7 +85,7 @@ namespace Campaign.Companion.Storage.Azure.Tests.Integration
 		[Test]
 		public async Task Update_ShouldUpdate()
 		{
-			var entityToSave = new NodeEntity(NodeType.Location)
+			var entityToSave = new NodeEntity(NodeType.Location.ToString())
 			{
 				Description = "UnitTest.Update",
 				Name = "BeforeName",

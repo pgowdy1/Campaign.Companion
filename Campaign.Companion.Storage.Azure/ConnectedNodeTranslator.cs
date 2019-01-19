@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace Campaign.Companion.Storage.Azure
 {
@@ -26,32 +27,12 @@ namespace Campaign.Companion.Storage.Azure
 		public async Task<ConnectedNode[]> ReadAll()
 		{
 			ConnectedNodeEntity[] nodes = await _connectedNodeRepository.ReadAll();
-			return Convert(nodes);
+			return nodes.Select(Convert).ToArray();
 		}
 
 		private ConnectedNode Convert(ConnectedNodeEntity node)
 		{
-			ConnectedNode translatedNode = new ConnectedNode(node.FirstNode, node.SecondNode)
-			{
-				Id = node.Id,
-			};
-
-			return translatedNode;
-		}
-
-		private ConnectedNode[] Convert(ConnectedNodeEntity[] nodes)
-		{
-			ConnectedNode[] returnedNodes = new ConnectedNode[nodes.Length];
-
-			for(int i = 0; i < returnedNodes.Length; i++)
-			{
-				returnedNodes[i] = new ConnectedNode(nodes[i].FirstNode, nodes[i].SecondNode)
-				{
-					Id = nodes[i].Id
-				};
-			}
-
-			return returnedNodes;
+			return new ConnectedNode(node.FirstNode, node.SecondNode);
 		}
 	}
 }

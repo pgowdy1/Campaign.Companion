@@ -7,25 +7,13 @@ namespace Campaign.Companion.Storage.Azure
 {
 	public class ConnectedNodeEntity : TableEntity
 	{
-		//I think these two properties are useless. Discuss with Trey. 
-		public string FirstNode { get; }
-		public string SecondNode { get; }
-
-		[IgnoreProperty]
-		public string Id
-		{
-			get
-			{
-				return PartitionKey + "." + RowKey;
-			}
-		}
-
+		public string FirstNode { get { return PartitionKey; } set { PartitionKey = value; } }
+		public string SecondNode { get { return RowKey; } set { RowKey = value; } }
+		
 		public ConnectedNodeEntity(string firstNodeId, string secondNodeId)
 		{
 			PartitionKey = firstNodeId;
 			RowKey = secondNodeId;
-			FirstNode = firstNodeId;
-			SecondNode = secondNodeId;
 		}
 	}
 }
