@@ -86,7 +86,7 @@ namespace Campaign.Companion.Storage.Azure.Tests
 			await _subject.Delete("ImGoingToBeDeleted.FarewellCruelWorld");
 
 			//Assert
-			_connectedNodeRepo.Verify(repo => repo.DeleteById("ImGoingToBeDeleted.FarewellCruelWorld"), Times.Once);
+			_connectedNodeRepo.Verify(repo => repo.Delete("ImGoingToBeDeleted", "FarewellCruelWorld"), Times.Once);
 		}
 
 		#region HelperMethods

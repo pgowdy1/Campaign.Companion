@@ -21,7 +21,8 @@ namespace Campaign.Companion.Storage.Azure
 
 		public async Task Delete(string id)
 		{
-			await _connectedNodeRepository.DeleteById(id);
+			var keys = id.Split('.');
+			await _connectedNodeRepository.Delete(keys[0], keys[1]);
 		}
 
 		public async Task<ConnectedNode[]> ReadAll()

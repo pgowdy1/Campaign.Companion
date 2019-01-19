@@ -5,7 +5,7 @@ namespace Campaign.Companion.Storage.Azure
 	public interface IConnectedNodeEntityRepository
 	{
 		Task<ConnectedNodeEntity> Add(ConnectedNodeEntity entity);
-		Task DeleteById(string id);
+		Task Delete(string partitionKey, string rowKey);
 		Task<ConnectedNodeEntity[]> ReadAll();
 	}
 }

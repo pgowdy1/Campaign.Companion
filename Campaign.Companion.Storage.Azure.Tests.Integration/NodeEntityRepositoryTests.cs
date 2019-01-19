@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using Campaign.Companion.Storage.Azure.Repositories;
+using FluentAssertions;
 using Moq;
 using NUnit.Framework;
 using System;
@@ -20,6 +21,12 @@ namespace Campaign.Companion.Storage.Azure.Tests.Integration
 				.Returns("UseDevelopmentStorage=true");
 
 			_subject = new NodeEntityRepository(_config.Object);
+		}
+
+		[TearDown]
+		public async Task After()
+		{
+			await _subject.TruncateTable();
 		}
 
 		[Test]
@@ -105,6 +112,37 @@ namespace Campaign.Companion.Storage.Azure.Tests.Integration
 			fetchedEntity.Description.Should().Be("UnitTest.Update.Success");
 			fetchedEntity.Name.Should().Be("AfterName");
 			fetchedEntity.ParentNodeId.Should().Be("AfterParent");
+		}
+
+		[Test]
+		public async Task TruncateTable_ShouldEmptyOutTable()
+		{
+			var record = await _subject.Add(new NodeEntity("a"));
+			var recordPulled = await _subject.Read(record.PartitionKey, record.RowKey);
+			recordPulled.Should().NotBeNull();
+
+			// Act
+			await _subject.TruncateTable();
+
+			// Assert
+			recordPulled = await _subject.Read(record.PartitionKey, record.RowKey);
+			recordPulled.Should().BeNull();
+		}
+
+		[Test]
+		public async Task TruncateTable_ShouldAllowSubsequentAdds()
+		{
+			var record = await _subject.Add(new NodeEntity("a"));
+			var recordPulled = await _subject.Read(record.PartitionKey, record.RowKey);
+			recordPulled.Should().NotBeNull();
+
+			// Act
+			await _subject.TruncateTable();
+			record = await _subject.Add(new NodeEntity("a"));
+
+			// Assert
+			recordPulled = await _subject.Read(record.PartitionKey, record.RowKey);
+			recordPulled.Should().NotBeNull();
 		}
 	}
 }

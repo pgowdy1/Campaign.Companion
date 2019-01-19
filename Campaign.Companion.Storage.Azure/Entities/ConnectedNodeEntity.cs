@@ -9,7 +9,9 @@ namespace Campaign.Companion.Storage.Azure
 	{
 		public string FirstNode { get { return PartitionKey; } set { PartitionKey = value; } }
 		public string SecondNode { get { return RowKey; } set { RowKey = value; } }
-		
+
+		public ConnectedNodeEntity() { }
+
 		public ConnectedNodeEntity(string firstNodeId, string secondNodeId)
 		{
 			PartitionKey = firstNodeId;

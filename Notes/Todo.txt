@@ -1,5 +1,13 @@
-Flesh out Repositories/Translators
-Clean up integration test DB after each run
+Flesh out Repositories/Translators - Perry
+Create Baseclass for Table Storage that all model entities will inherit from - Perry 
 MultiTenant
 Host/ServiceLayer
 Client
+
+
+Azure Dev Ops
+	- Build 
+	- Test
+	- Publish
+
+When should we start working from a private repo? 

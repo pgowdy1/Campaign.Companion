@@ -8,19 +8,19 @@ using System.Threading.Tasks;
 
 namespace Campaign.Companion.Storage.Azure
 {
-	public class NodeEntityRepository : INodeEntityRepository
+	public class TableStorageRepository<T> where T : class, ITableEntity, new()
 	{
 		private CloudTable _cloudTable;
 		private readonly IConfigurationProvider _configurationProvider;
 
-		public NodeEntityRepository(IConfigurationProvider configurationProvider)
+		public TableStorageRepository(IConfigurationProvider configurationProvider)
 		{
 			_configurationProvider = configurationProvider;
 
 			CreateTableIfNotExist();
 		}
 
-		public void CreateTableIfNotExist()
+		private void CreateTableIfNotExist()
 		{
 			//  ConfigurationManager.AppSettings.Get("StorageConnectionString");
 			var connectionString = _configurationProvider.StorageConnectionString;
@@ -38,16 +38,22 @@ namespace Campaign.Companion.Storage.Azure
 			_cloudTable.CreateIfNotExistsAsync().Wait();
 		}
 
-		public async Task<NodeEntity> Add(NodeEntity node)
+		public async Task TruncateTable()
 		{
-			TableResult tableResult = await _cloudTable.ExecuteAsync(TableOperation.Insert(node));
-			return (NodeEntity)tableResult.Result;
+			await _cloudTable.DeleteIfExistsAsync();
+			await _cloudTable.CreateIfNotExistsAsync();
 		}
 
-		public async Task<NodeEntity> Read(string partitionKey, string rowKey)
+		public async Task<T> Add(T node)
 		{
-			TableResult tableResult = await _cloudTable.ExecuteAsync(TableOperation.Retrieve<NodeEntity>(partitionKey, rowKey));
-			return (NodeEntity)tableResult.Result;
+			TableResult tableResult = await _cloudTable.ExecuteAsync(TableOperation.Insert(node));
+			return (T)tableResult.Result;
+		}
+
+		public async Task<T> Read(string partitionKey, string rowKey)
+		{
+			TableResult tableResult = await _cloudTable.ExecuteAsync(TableOperation.Retrieve<T>(partitionKey, rowKey));
+			return (T)tableResult.Result;
 		}
 
 		public async Task Delete(string partitionKey, string rowKey)
@@ -58,7 +64,7 @@ namespace Campaign.Companion.Storage.Azure
 			await _cloudTable.ExecuteAsync(TableOperation.Delete(entity));
 		}
 
-		public async Task Update(NodeEntity node)
+		public virtual async Task Update(T node)
 		{
 			await _cloudTable.ExecuteAsync(TableOperation.Replace(node));
 		}
