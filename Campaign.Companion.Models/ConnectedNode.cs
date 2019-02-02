@@ -2,7 +2,8 @@
 {
 	public class ConnectedNode
 	{
-        public string FirstNode { get; set; }
+		public string UniverseId { get; set; }
+		public string FirstNode { get; set; }
         public string SecondNode { get; set; }
 
 		public string Id

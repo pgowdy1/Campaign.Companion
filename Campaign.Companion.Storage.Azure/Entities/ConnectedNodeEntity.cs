@@ -1,21 +1,20 @@
-﻿using Microsoft.WindowsAzure.Storage.Table;
+﻿using Campaign.Companion.Storage.Azure.Entities;
+using Microsoft.WindowsAzure.Storage.Table;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Campaign.Companion.Storage.Azure
 {
-	public class ConnectedNodeEntity : TableEntity
+	public class ConnectedNodeEntity : UniversalEntityBase
 	{
-		public string FirstNode { get { return PartitionKey; } set { PartitionKey = value; } }
-		public string SecondNode { get { return RowKey; } set { RowKey = value; } }
+		public string FirstNodeId { get; set; }
+		public string SecondNodeId { get; set; }
 
-		public ConnectedNodeEntity() { }
+		public ConnectedNodeEntity() : base() { }
 
-		public ConnectedNodeEntity(string firstNodeId, string secondNodeId)
+		public ConnectedNodeEntity(string universeId) : base(universeId)
 		{
-			PartitionKey = firstNodeId;
-			RowKey = secondNodeId;
 		}
 	}
 }

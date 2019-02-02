@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Campaign.Companion.Models;
-using Campaign.Companion.Storage.Azure.Interfaces;
 
 namespace Campaign.Companion.Storage.Azure
 {

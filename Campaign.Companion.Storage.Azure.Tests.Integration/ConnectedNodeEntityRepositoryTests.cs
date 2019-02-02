@@ -36,8 +36,8 @@ namespace Campaign.Companion.Storage.Azure.Tests.Integration
 			ConnectedNodeEntity addedNode = await _subject.Add(new ConnectedNodeEntity("ImTheFirstNodeId", "ImTheSecondNodeId"));
 
 			//Assert
-			addedNode.FirstNode.Should().Be("ImTheFirstNodeId");
-			addedNode.SecondNode.Should().Be("ImTheSecondNodeId");
+			addedNode.FirstNodeId.Should().Be("ImTheFirstNodeId");
+			addedNode.SecondNodeId.Should().Be("ImTheSecondNodeId");
 		}
 
 		[Test]
@@ -47,7 +47,7 @@ namespace Campaign.Companion.Storage.Azure.Tests.Integration
 
 			var savedEntity = await _subject.Add(entityToSave);
 
-			var fetchedEntity = await _subject.Read(savedEntity.FirstNode, savedEntity.SecondNode);
+			var fetchedEntity = await _subject.Read(savedEntity.FirstNodeId, savedEntity.SecondNodeId);
 
 			savedEntity.Should().BeEquivalentTo(fetchedEntity);
 		}
@@ -66,9 +66,9 @@ namespace Campaign.Companion.Storage.Azure.Tests.Integration
 		
 			var savedEntity = await _subject.Add(entityToSave);
 
-			await _subject.Delete(savedEntity.FirstNode, savedEntity.SecondNode);
+			await _subject.Delete(savedEntity.FirstNodeId, savedEntity.SecondNodeId);
 
-			var fetchedEntity = await _subject.Read(entityToSave.FirstNode, entityToSave.SecondNode);
+			var fetchedEntity = await _subject.Read(entityToSave.FirstNodeId, entityToSave.SecondNodeId);
 
 			fetchedEntity.Should().BeNull();
 		}
@@ -82,7 +82,7 @@ namespace Campaign.Companion.Storage.Azure.Tests.Integration
 
 			await _subject.Update(savedEntity);
 
-			var fetchedEntity = await _subject.Read(savedEntity.FirstNode, savedEntity.SecondNode);
+			var fetchedEntity = await _subject.Read(savedEntity.FirstNodeId, savedEntity.SecondNodeId);
 
 			fetchedEntity.Timestamp.Should().NotBe(savedEntity.Timestamp);
 		}

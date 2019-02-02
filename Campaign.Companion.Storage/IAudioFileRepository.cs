@@ -9,7 +9,7 @@ namespace Campaign.Companion.Storage
 	{
 		Task<AudioFile> Add(AudioFile audioFile);
 		Task Delete(string audioFileId);
-		Task Update(AudioFile audioFile);
-		Task<AudioFile> Read(string audioFileId);
+		Task UpdateAsync(AudioFile audioFile);
+		Task<AudioFile> Read(string universeId, string audioFileId);
 	}
 }

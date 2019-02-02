@@ -1,18 +1,24 @@
-﻿using Campaign.Companion.Storage.Azure.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq;
 
-namespace Campaign.Companion.Storage.Azure.Repositories
+namespace Campaign.Companion.Storage.Azure
 {
 	public class UniverseEntityRepository : TableStorageRepository<UniverseEntity>, IUniverseEntityRepository
 	{
 		public UniverseEntityRepository(IConfigurationProvider configurationProvider) : base(configurationProvider) { }
 
-		public Task<UniverseEntity[]> GetUniverses(string userId)
+
+		public async Task<UniverseEntity[]> ReadAllForUser(string userId)
 		{
-			throw new NotImplementedException();
+			return await GetByParitionKeyAsync(userId);
+		}
+
+		public async Task<UniverseEntity> ReadById(string id)
+		{
+			return (await GetByRowKeyAsync(id)).First();
 		}
 	}
 }

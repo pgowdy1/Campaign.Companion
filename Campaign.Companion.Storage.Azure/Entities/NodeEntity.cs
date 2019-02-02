@@ -1,22 +1,17 @@
-﻿using Microsoft.WindowsAzure.Storage.Table;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 namespace Campaign.Companion.Storage.Azure
 {
-    public class NodeEntity : TableEntity
+    public class NodeEntity : UniversalEntityBase
     {
         public string Name { get; set; }
         public string ParentNodeId { get; set; }
         public string Description { get; set; }
-        
-        public NodeEntity() { }
+		public string Type { get; set; }
 
-        public NodeEntity(string type)
+		public NodeEntity() { }
+
+        public NodeEntity(string universeId) : base(universeId)
         {
-            PartitionKey = type.ToString();
-            RowKey = Guid.NewGuid().ToString();
         }
     }
 }

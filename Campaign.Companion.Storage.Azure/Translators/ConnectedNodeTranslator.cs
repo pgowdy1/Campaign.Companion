@@ -33,7 +33,7 @@ namespace Campaign.Companion.Storage.Azure
 
 		private ConnectedNode Convert(ConnectedNodeEntity node)
 		{
-			return new ConnectedNode(node.FirstNode, node.SecondNode);
+			return new ConnectedNode(node.FirstNodeId, node.SecondNodeId);
 		}
 	}
 }

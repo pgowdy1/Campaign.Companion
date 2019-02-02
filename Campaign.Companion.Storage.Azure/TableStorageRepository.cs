@@ -10,6 +10,9 @@ namespace Campaign.Companion.Storage.Azure
 {
 	public class TableStorageRepository<T> where T : class, ITableEntity, new()
 	{
+		protected const string PARTITION_KEY_COLUMN_NAME = "PartitionKey";
+		protected const string ROW_KEY_COLUMN_NAME = "RowKey";
+
 		private CloudTable _cloudTable;
 		private readonly IConfigurationProvider _configurationProvider;
 
@@ -44,6 +47,27 @@ namespace Campaign.Companion.Storage.Azure
 			await _cloudTable.CreateIfNotExistsAsync();
 		}
 
+		public async Task<T[]> ReadAll()
+		{
+			TableQuery<T> query = new TableQuery<T>();
+			return await ReadMany(query);
+		}
+
+		public async Task<T[]> ReadMany(TableQuery<T> query)
+		{
+			var items = new List<T>();
+
+			TableContinuationToken token = null;
+			do
+			{
+				TableQuerySegment<T> seg = await _cloudTable.ExecuteQuerySegmentedAsync(query, token);
+				token = seg.ContinuationToken;
+				items.AddRange(seg);
+			} while (token != null);
+
+			return items.ToArray();
+		}
+
 		public async Task<T> Add(T node)
 		{
 			TableResult tableResult = await _cloudTable.ExecuteAsync(TableOperation.Insert(node));
@@ -62,6 +86,22 @@ namespace Campaign.Companion.Storage.Azure
 			entity.ETag = "*";
 
 			await _cloudTable.ExecuteAsync(TableOperation.Delete(entity));
+		}
+
+		protected async Task<T[]> GetByFieldValueAsync(string fieldName, string value)
+		{
+			var condition = TableQuery.GenerateFilterCondition(fieldName, QueryComparisons.Equal, value);
+			return await ReadMany(new TableQuery<T>().Where(condition));
+		}
+
+		protected async Task<T[]> GetByParitionKeyAsync(string value)
+		{
+			return await GetByFieldValueAsync(PARTITION_KEY_COLUMN_NAME, value);
+		}
+
+		protected async Task<T[]> GetByRowKeyAsync(string value)
+		{
+			return await GetByFieldValueAsync(PARTITION_KEY_COLUMN_NAME, value);
 		}
 
 		public virtual async Task Update(T node)

@@ -9,7 +9,7 @@ namespace Campaign.Companion.Storage
     public interface INodeAudioRepository
     {
 		Task<NodeAudio> Add(NodeAudio nodeAudio);
-        Task<NodeAudio> Read(string nodeAudioId);
+        Task<NodeAudio> Read(string universeId, string nodeId, string audioFileId);
         Task Update(NodeAudio nodeAudio);
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Campaign.Companion.Storage.Azure.Repositories
+namespace Campaign.Companion.Storage.Azure
 {
 	public class NodeEntityRepository : TableStorageRepository<NodeEntity>, INodeEntityRepository
 	{

@@ -42,7 +42,7 @@ namespace Campaign.Companion.Tests.DomainServices
 			var expectedAudioFile = new AudioFile() { Id = 42 };
 
 			await _subject.Update(expectedAudioFile);
-			_audioFileRepo.Verify(m => m.Update(expectedAudioFile));
+			_audioFileRepo.Verify(m => m.UpdateAsync(expectedAudioFile));
 		}
 
 		[Test]

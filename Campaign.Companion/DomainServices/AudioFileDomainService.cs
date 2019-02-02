@@ -27,7 +27,7 @@ namespace Campaign.Companion.DomainServices
 
 		public async Task Update(AudioFile audioFile)
 		{
-			await _audioFileRepository.Update(audioFile);
+			await _audioFileRepository.UpdateAsync(audioFile);
 		}
 
 		public async Task<AudioFile> Read(string audioFileId)

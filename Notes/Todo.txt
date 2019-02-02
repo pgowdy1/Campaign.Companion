@@ -1,6 +1,7 @@
 Flesh out Repositories/Translators - Perry
 Create Baseclass for Table Storage that all model entities will inherit from - Perry 
 MultiTenant
+Add BlobStorage to AudioFileTranslator
 Host/ServiceLayer
 Client
 
