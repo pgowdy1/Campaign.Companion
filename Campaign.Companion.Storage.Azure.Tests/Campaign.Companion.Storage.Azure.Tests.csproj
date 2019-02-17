@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,9 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Campaign.Companion.Models\Campaign.Companion.Models.csproj" />
-    <ProjectReference Include="..\Campaign.Companion.Storage\Campaign.Companion.Storage.csproj" />
-    <ProjectReference Include="..\Campaign.Companion\Campaign.Companion.csproj" />
+    <ProjectReference Include="..\Campaign.Companion.Storage.Azure\Campaign.Companion.Storage.Azure.csproj" />
   </ItemGroup>
 
 </Project>

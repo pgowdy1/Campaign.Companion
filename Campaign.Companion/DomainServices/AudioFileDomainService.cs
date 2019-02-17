@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Campaign.Companion.DomainServices
 {
@@ -14,24 +15,24 @@ namespace Campaign.Companion.DomainServices
             _audioFileRepository = audioFileRepository;
         }
 
-		public AudioFile Add(AudioFile audioFile)
+		public async Task<AudioFile> Add(AudioFile audioFile)
 		{
-			return _audioFileRepository.Add(audioFile);
+			return await _audioFileRepository.Add(audioFile);
 		}
 
-		public void Delete(int audioFileId)
+		public async Task Delete(string universeId, string audioFileId)
 		{
-			_audioFileRepository.Delete(audioFileId);
+			await _audioFileRepository.Delete(universeId, audioFileId);
 		}
 
-		public void Update(AudioFile audioFile)
+		public async Task Update(AudioFile audioFile)
 		{
-			_audioFileRepository.Update(audioFile);
+			await _audioFileRepository.UpdateAsync(audioFile);
 		}
 
-		public AudioFile Read(int audioFileId)
+		public async Task<AudioFile> Read(string universeId, string audioFileId)
 		{
-			return _audioFileRepository.Read(audioFileId);
+			return await _audioFileRepository.Read(universeId, audioFileId);
 		}
 	}
 }

@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Campaign.Companion.Storage
 {
 	public interface IAudioFileRepository
 	{
-        AudioFile Add(AudioFile audioFile);
-		void Delete(int audioFileId);
-		void Update(AudioFile audioFile);
-		AudioFile Read(int audioFileId);
+		Task<AudioFile> Add(AudioFile audioFile);
+		Task Delete(string universeId, string audioFileId);
+		Task UpdateAsync(AudioFile audioFile);
+		Task<AudioFile> Read(string universeId, string audioFileId);
 	}
 }

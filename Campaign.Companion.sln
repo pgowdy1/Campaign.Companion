@@ -5,11 +5,25 @@ VisualStudioVersion = 15.0.28010.2050
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Campaign.Companion", "Campaign.Companion\Campaign.Companion.csproj", "{EA388DA0-001F-470B-A7EC-13B090BBDA14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Campaign.Companion.Tests", "Campaign.Companion.Tests\Campaign.Companion.Tests.csproj", "{F3A28E4F-42F7-46D2-987A-3E6DE0570AA5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Campaign.Companion.Tests", "Campaign.Companion.Tests\Campaign.Companion.Tests.csproj", "{F3A28E4F-42F7-46D2-987A-3E6DE0570AA5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Campaign.Companion.Storage", "Campaign.Companion.Storage\Campaign.Companion.Storage.csproj", "{4C1DC486-0F69-4272-BE01-30B774D10519}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Campaign.Companion.Storage", "Campaign.Companion.Storage\Campaign.Companion.Storage.csproj", "{4C1DC486-0F69-4272-BE01-30B774D10519}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Campaign.Companion.Models", "Campaign.Companion.Models\Campaign.Companion.Models.csproj", "{2F2A5FB0-1BD0-4CBC-8E07-6CFCAE487CA2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Campaign.Companion.Models", "Campaign.Companion.Models\Campaign.Companion.Models.csproj", "{2F2A5FB0-1BD0-4CBC-8E07-6CFCAE487CA2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Campaign.Companion.Storage.Azure", "Campaign.Companion.Storage.Azure\Campaign.Companion.Storage.Azure.csproj", "{4F06799A-5554-4D3D-AB20-DDF397B4F315}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Campaign.Companion.Storage.Azure.Tests.Integration", "Campaign.Companion.Storage.Azure.Tests.Integration\Campaign.Companion.Storage.Azure.Tests.Integration.csproj", "{D24CFCCF-EF21-4D50-8243-83BBBC20B5D7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Campaign.Companion.Storage.Azure.Tests", "Campaign.Companion.Storage.Azure.Tests\Campaign.Companion.Storage.Azure.Tests.csproj", "{70B0AA0A-2212-4A77-93AE-2BCCFD4BEEB2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Domain Layer", "1 - Domain Layer", "{DE626FF6-5B0E-4401-91A9-42FA5CD7F91F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Data Layer", "2 - Data Layer", "{84039705-2F93-4E43-9D6F-07B32D899170}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8324CFB2-A3C5-4B03-A03B-9F3288DACD6B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{20E73251-1F1C-4828-93D5-ED2C74BDD0EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,9 +47,32 @@ Global
 		{2F2A5FB0-1BD0-4CBC-8E07-6CFCAE487CA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F2A5FB0-1BD0-4CBC-8E07-6CFCAE487CA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F2A5FB0-1BD0-4CBC-8E07-6CFCAE487CA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F06799A-5554-4D3D-AB20-DDF397B4F315}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F06799A-5554-4D3D-AB20-DDF397B4F315}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F06799A-5554-4D3D-AB20-DDF397B4F315}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F06799A-5554-4D3D-AB20-DDF397B4F315}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D24CFCCF-EF21-4D50-8243-83BBBC20B5D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D24CFCCF-EF21-4D50-8243-83BBBC20B5D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D24CFCCF-EF21-4D50-8243-83BBBC20B5D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D24CFCCF-EF21-4D50-8243-83BBBC20B5D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70B0AA0A-2212-4A77-93AE-2BCCFD4BEEB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70B0AA0A-2212-4A77-93AE-2BCCFD4BEEB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70B0AA0A-2212-4A77-93AE-2BCCFD4BEEB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70B0AA0A-2212-4A77-93AE-2BCCFD4BEEB2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EA388DA0-001F-470B-A7EC-13B090BBDA14} = {DE626FF6-5B0E-4401-91A9-42FA5CD7F91F}
+		{F3A28E4F-42F7-46D2-987A-3E6DE0570AA5} = {20E73251-1F1C-4828-93D5-ED2C74BDD0EC}
+		{4C1DC486-0F69-4272-BE01-30B774D10519} = {84039705-2F93-4E43-9D6F-07B32D899170}
+		{2F2A5FB0-1BD0-4CBC-8E07-6CFCAE487CA2} = {DE626FF6-5B0E-4401-91A9-42FA5CD7F91F}
+		{4F06799A-5554-4D3D-AB20-DDF397B4F315} = {84039705-2F93-4E43-9D6F-07B32D899170}
+		{D24CFCCF-EF21-4D50-8243-83BBBC20B5D7} = {8324CFB2-A3C5-4B03-A03B-9F3288DACD6B}
+		{70B0AA0A-2212-4A77-93AE-2BCCFD4BEEB2} = {8324CFB2-A3C5-4B03-A03B-9F3288DACD6B}
+		{8324CFB2-A3C5-4B03-A03B-9F3288DACD6B} = {84039705-2F93-4E43-9D6F-07B32D899170}
+		{20E73251-1F1C-4828-93D5-ED2C74BDD0EC} = {DE626FF6-5B0E-4401-91A9-42FA5CD7F91F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {07BCAA70-64FB-4095-A436-9EE1E99347B1}

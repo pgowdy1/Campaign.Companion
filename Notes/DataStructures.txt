@@ -1,25 +1,49 @@
 Phase 1
 -------------------------------------------------------
 Nodes
-	Id
+	UniverseId 	- ParitionKey
+	Id		- RowKey
 	Name
 	ParentNode
 	Description
 	Type = Entity | Location | Tag
 	
 ConnectedNodes
-	Id
+	UniverseId 	- PartitionKey
+	Id		- RowKey
 	NodeId
 	NodeId
 
 NodeAudio
-	Id
+	UniverseId 	- PartitionKey
+	Id  		- RowKey
 	NodeId
-	AudioId
+	AudioFileId
 	AutoPlay
 	Loop
 
 AudioFiles
-	Id
+	UniverseId	- PartitionKey
+	Id		- RowKey
 	Name
+
+Phase 2
+-------------------------------------------------------
+Universe
+	UserId 		- Parition Key
+	Id 		- Row Key
+	Name 
+
+User
+	Password 	- Partition Key 
+	Email 		- Row Key 
+	Name
+	
+
+
+
+	
+	
+	
+	
 	

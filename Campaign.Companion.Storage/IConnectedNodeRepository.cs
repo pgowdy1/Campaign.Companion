@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Campaign.Companion.Storage
 {
     public interface IConnectedNodeRepository
     {
-        ConnectedNode Add(ConnectedNode node);
-        ConnectedNode[] ReadAll();
+        Task<ConnectedNode> Add(ConnectedNode node);
+        Task<ConnectedNode[]> ReadAll();
+		Task Delete(string id);
     }
 }

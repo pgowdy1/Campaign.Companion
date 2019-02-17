@@ -2,13 +2,22 @@
 {
 	public class ConnectedNode
 	{
-		public int Id { get; set; }
-        public int FirstNode { get; set; }
-        public int SecondNode { get; set; }
+		public string UniverseId { get; set; }
+		public string FirstNode { get; set; }
+        public string SecondNode { get; set; }
 
-        public ConnectedNode(int firstNodeId, int secondNodeId)
+		public string Id
+		{
+			get
+			{
+				return FirstNode + "." + SecondNode;
+			}
+		}
+
+		public ConnectedNode(string universeId, string firstNodeId, string secondNodeId)
         {
-            FirstNode = firstNodeId;
+			UniverseId = universeId;
+			FirstNode = firstNodeId;
             SecondNode = secondNodeId;
         }
 	}
