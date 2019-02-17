@@ -1,14 +1,33 @@
-Flesh out Repositories/Translators - Perry
-Create Baseclass for Table Storage that all model entities will inherit from - Perry 
-MultiTenant
-Add BlobStorage to AudioFileTranslator
+
+When should we start working from a private repo? 
+
+// FUN
 Host/ServiceLayer
 Client
-
-
 Azure Dev Ops
 	- Build 
 	- Test
 	- Publish
 
-When should we start working from a private repo? 
+// As needed
+Seperate audio streaming from audio list
+Add BlobStorage to AudioFileTranslator
+
+
+
+
+
+
+
+
+List Array
+DataTable
+Linq
+Linq To Sql / IQueryable
+Yield
+Coroutine
+
+
+
+No alloc
+yield return new Reference()
