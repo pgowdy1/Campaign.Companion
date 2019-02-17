@@ -25,9 +25,9 @@ namespace Campaign.Companion.Storage.Azure
 		}
 
 
-		public async Task Delete(string audioFileId)
+		public async Task Delete(string universeId, string audioFileId)
 		{
-			await _audioFileEntityRepository.DeleteById(audioFileId);
+			await _audioFileEntityRepository.DeleteById(universeId, audioFileId);
 
 			// TODO: File
 		}

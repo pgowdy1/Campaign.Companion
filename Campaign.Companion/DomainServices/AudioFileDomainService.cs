@@ -20,9 +20,9 @@ namespace Campaign.Companion.DomainServices
 			return await _audioFileRepository.Add(audioFile);
 		}
 
-		public async Task Delete(string audioFileId)
+		public async Task Delete(string universeId, string audioFileId)
 		{
-			await _audioFileRepository.Delete(audioFileId);
+			await _audioFileRepository.Delete(universeId, audioFileId);
 		}
 
 		public async Task Update(AudioFile audioFile)
@@ -30,9 +30,9 @@ namespace Campaign.Companion.DomainServices
 			await _audioFileRepository.UpdateAsync(audioFile);
 		}
 
-		public async Task<AudioFile> Read(string audioFileId)
+		public async Task<AudioFile> Read(string universeId, string audioFileId)
 		{
-			return await _audioFileRepository.Read(audioFileId);
+			return await _audioFileRepository.Read(universeId, audioFileId);
 		}
 	}
 }

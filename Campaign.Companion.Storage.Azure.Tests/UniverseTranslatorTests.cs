@@ -1,5 +1,4 @@
 ﻿using Campaign.Companion.Models;
-using Campaign.Companion.Storage.Azure.Interfaces;
 using FluentAssertions;
 using Moq;
 using NUnit.Framework;

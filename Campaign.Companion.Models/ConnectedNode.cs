@@ -14,9 +14,10 @@
 			}
 		}
 
-		public ConnectedNode(string firstNodeId, string secondNodeId)
+		public ConnectedNode(string universeId, string firstNodeId, string secondNodeId)
         {
-            FirstNode = firstNodeId;
+			UniverseId = universeId;
+			FirstNode = firstNodeId;
             SecondNode = secondNodeId;
         }
 	}

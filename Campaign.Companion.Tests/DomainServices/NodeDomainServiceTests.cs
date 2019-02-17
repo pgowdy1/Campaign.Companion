@@ -88,14 +88,15 @@ namespace Campaign.Companion.Tests
 		public async Task ConnectNodes_ShouldCreateNewConnectedNode()
 		{
 			// Setup
+			string universeId = "verse";
 			string firstId = "666";
 			string secondId = "333";
 
-			ConnectedNode expectedConnectedNode = new ConnectedNode(firstId, secondId);
+			ConnectedNode expectedConnectedNode = new ConnectedNode(universeId, firstId, secondId);
 			_connectedNodeRepository.Setup(m => m.Add(It.IsAny<ConnectedNode>())).ReturnsAsync(expectedConnectedNode);
 
 			// Act
-			ConnectedNode newNode = await _subject.ConnectNodes(firstId, secondId);
+			ConnectedNode newNode = await _subject.ConnectNodes(universeId, firstId, secondId);
 
 			// Assert
 			_connectedNodeRepository.Verify(m => m.Add(It.Is<ConnectedNode>(n =>
@@ -116,33 +117,36 @@ namespace Campaign.Companion.Tests
 		public async Task AddAudioFile_ShouldLinkAudioFileToNode()
 		{
 			// Setup
-			int audioId = 666;
-			int nodeId = 333;
+			string universeId = "Mine.";
+			string audioId = "666";
+			string nodeId = "333";
 
-			NodeAudio expectedNodeAudio = new NodeAudio(666, 333);
-			_nodeAudioRepository.Setup(m => m.Add(It.IsAny<NodeAudio>())).ReturnsAsync(expectedNodeAudio);
+			NodeAudio newlyCreateNodeAudio = new NodeAudio(universeId, audioId, nodeId);
+			_nodeAudioRepository.Setup(m => m.Add(It.IsAny<NodeAudio>())).ReturnsAsync(newlyCreateNodeAudio);
 
 			// Act
-			NodeAudio newNode = await _subject.AddAudioFile(nodeId, audioId);
+			NodeAudio newNode = await _subject.AddAudioFile(universeId, nodeId, audioId);
 
 			// Assert
 			_nodeAudioRepository.Verify(m => m.Add(It.Is<NodeAudio>(n =>
 				n.AudioId == audioId && n.NodeId == nodeId)));
 
-			newNode.Should().Be(expectedNodeAudio);
+			newNode.Should().Be(newlyCreateNodeAudio);
 		}
 
 		[Test]
 		public async Task SetAudioFileShouldLoop_ShouldUpdateAudioFileLoop()
 		{
 			// Setup
+			string universeId = "verse.";
 			string nodeAudioId = "666";
+			string audioFileId = "333";
 
-			NodeAudio expectedNodeAudio = new NodeAudio(666, 333) { Id = nodeAudioId, Loop = false };
-			_nodeAudioRepository.Setup(m => m.Read(It.IsAny<string>())).ReturnsAsync(expectedNodeAudio);
+			NodeAudio existingAudio = new NodeAudio(universeId, nodeAudioId, audioFileId) { Loop = false };
+			_nodeAudioRepository.Setup(m => m.ReadSpecific(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>())).ReturnsAsync(existingAudio);
 
 			// Act
-			await _subject.SetAudioFileShouldLoop(nodeAudioId, true);
+			await _subject.SetAudioFileShouldLoop(universeId, "5", nodeAudioId, true);
 
 			// Assert
 			_nodeAudioRepository.Verify(m => m.Update(It.Is<NodeAudio>(n => n.Loop == true)));
@@ -152,13 +156,15 @@ namespace Campaign.Companion.Tests
 		public async Task SetAudioFileShouldLoop_ShouldUpdateAudioFileAutoPlay()
 		{
 			// Setup
+			string universeId = "verse.";
 			string nodeAudioId = "666";
+			string audioFileId = "333";
 
-			NodeAudio expectedNodeAudio = new NodeAudio(666, 333) { Id = nodeAudioId, AutoPlay = false };
-			_nodeAudioRepository.Setup(m => m.Read(It.IsAny<string>())).ReturnsAsync(expectedNodeAudio);
+			NodeAudio existingAudio = new NodeAudio(universeId, nodeAudioId, audioFileId) { AutoPlay = false };
+			_nodeAudioRepository.Setup(m => m.ReadSpecific(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>())).ReturnsAsync(existingAudio);
 
 			// Act
-			await _subject.SetAudioFileShouldAutoPlay(nodeAudioId, true);
+			await _subject.SetAudioFileShouldAutoPlay(universeId, "5", nodeAudioId, true);
 
 			// Assert
 			_nodeAudioRepository.Verify(m => m.Update(It.Is<NodeAudio>(n => n.AutoPlay == true)));
@@ -168,7 +174,7 @@ namespace Campaign.Companion.Tests
 		public async Task GetConnections_ShouldCallRepository()
 		{
 			// Setup
-			var expectedConnections = new[] { new ConnectedNode("1", "2"), new ConnectedNode("3", "2")};
+			var expectedConnections = new[] { new ConnectedNode("0", "1", "2"), new ConnectedNode("0", "3", "2")};
 			_connectedNodeRepository.Setup(m => m.ReadAll()).ReturnsAsync(expectedConnections);
 
 			// Act

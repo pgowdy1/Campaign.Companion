@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Campaign.Companion.Models;
@@ -43,10 +44,16 @@ namespace Campaign.Companion.Storage.Azure
 			};
 		}
 
-		public async Task<NodeAudio> Read(string universeId, string nodeId, string audioFileId)
+		public async Task<NodeAudio> ReadSpecific(string universeId, string nodeId, string audioFileId)
 		{
-			var entity = await _nodeAudioRepository.Read(universeId, nodeId, audioFileId);
+			var entity = await _nodeAudioRepository.ReadSpecific(universeId, nodeId, audioFileId);
 			return Convert(entity);
+		}
+
+		public async Task<NodeAudio[]> ReadAllForNode(string universeId, string nodeId)
+		{
+			var entities = await _nodeAudioRepository.ReadAllForNode(universeId, nodeId);
+			return entities.Select(Convert).ToArray();
 		}
 
 		public async Task Update(NodeAudio nodeAudio)

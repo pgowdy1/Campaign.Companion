@@ -7,7 +7,7 @@ namespace Campaign.Companion.Storage.Azure
 {
 	public class AudioFileEntityRepository : TableStorageRepository<AudioFileEntity>, IAudioFileEntityRepository
 	{
-		public AudioFileEntityRepository(IConfigurationProvider configurationProvider) : base(configurationProvider)
+		public AudioFileEntityRepository(IConfigurationProvider configurationProvider) : base(configurationProvider, "AudioFile")
 		{
 		}
 

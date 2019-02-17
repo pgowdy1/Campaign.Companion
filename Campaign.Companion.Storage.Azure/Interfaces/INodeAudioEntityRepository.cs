@@ -10,6 +10,7 @@ namespace Campaign.Companion.Storage.Azure
 	{
 		Task<NodeAudioEntity> Add(NodeAudioEntity nodeAudio);
 		Task<NodeAudioEntity[]> ReadAllForNode(string universeId, string nodeId);
+		Task<NodeAudioEntity> ReadSpecific(string universeId, string nodeId, string audioFileId);
 		Task Update(NodeAudioEntity nodeAudio);
 	}
 }

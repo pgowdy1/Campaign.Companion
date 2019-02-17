@@ -8,7 +8,7 @@ namespace Campaign.Companion.Storage
 	public interface IAudioFileRepository
 	{
 		Task<AudioFile> Add(AudioFile audioFile);
-		Task Delete(string audioFileId);
+		Task Delete(string universeId, string audioFileId);
 		Task UpdateAsync(AudioFile audioFile);
 		Task<AudioFile> Read(string universeId, string audioFileId);
 	}

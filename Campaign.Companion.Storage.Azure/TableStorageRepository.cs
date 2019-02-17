@@ -16,14 +16,14 @@ namespace Campaign.Companion.Storage.Azure
 		private CloudTable _cloudTable;
 		private readonly IConfigurationProvider _configurationProvider;
 
-		public TableStorageRepository(IConfigurationProvider configurationProvider)
+		public TableStorageRepository(IConfigurationProvider configurationProvider, string tableName)
 		{
 			_configurationProvider = configurationProvider;
 
-			CreateTableIfNotExist();
+			CreateTableIfNotExist(tableName);
 		}
 
-		private void CreateTableIfNotExist()
+		private void CreateTableIfNotExist(string tableName)
 		{
 			//  ConfigurationManager.AppSettings.Get("StorageConnectionString");
 			var connectionString = _configurationProvider.StorageConnectionString;
@@ -35,7 +35,7 @@ namespace Campaign.Companion.Storage.Azure
 			CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
 			// Retrieve a reference to the table.
-			_cloudTable = tableClient.GetTableReference("Nodes");
+			_cloudTable = tableClient.GetTableReference(tableName);
 
 			// Create the table if it doesn't exist.
 			_cloudTable.CreateIfNotExistsAsync().Wait();

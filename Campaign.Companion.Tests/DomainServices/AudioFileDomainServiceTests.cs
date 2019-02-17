@@ -32,14 +32,14 @@ namespace Campaign.Companion.Tests.DomainServices
 		[Test]
 		public async Task Delete_ShouldCallRepository()
 		{
-			await _subject.Delete("1");
-			_audioFileRepo.Verify(m => m.Delete("1"));
+			await _subject.Delete("verse", "1");
+			_audioFileRepo.Verify(m => m.Delete("verse", "1"));
 		}
 
 		[Test]
 		public async Task Update_ShouldCallRepository()
 		{
-			var expectedAudioFile = new AudioFile() { Id = 42 };
+			var expectedAudioFile = new AudioFile() { Id = "42" };
 
 			await _subject.Update(expectedAudioFile);
 			_audioFileRepo.Verify(m => m.UpdateAsync(expectedAudioFile));
@@ -48,8 +48,8 @@ namespace Campaign.Companion.Tests.DomainServices
 		[Test]
 		public async Task Read_ShouldCallRepository()
 		{
-			await _subject.Read("1");
-			_audioFileRepo.Verify(m => m.Read("1"));
+			await _subject.Read("verse", "1");
+			_audioFileRepo.Verify(m => m.Read("verse", "1"));
 		}
 
 	}

@@ -8,7 +8,7 @@ namespace Campaign.Companion.Storage.Azure.Repositories
 {
 	public class UserEntityRepository : TableStorageRepository<UserEntity>, IUserEntityRepository
 	{
-		public UserEntityRepository(IConfigurationProvider configurationProvider) : base(configurationProvider)
+		public UserEntityRepository(IConfigurationProvider configurationProvider) : base(configurationProvider, "UserEntities")
 		{
 		}
 	}

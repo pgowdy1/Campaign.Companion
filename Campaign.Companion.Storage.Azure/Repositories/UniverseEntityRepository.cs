@@ -8,7 +8,7 @@ namespace Campaign.Companion.Storage.Azure
 {
 	public class UniverseEntityRepository : TableStorageRepository<UniverseEntity>, IUniverseEntityRepository
 	{
-		public UniverseEntityRepository(IConfigurationProvider configurationProvider) : base(configurationProvider) { }
+		public UniverseEntityRepository(IConfigurationProvider configurationProvider) : base(configurationProvider, "Universes") { }
 
 
 		public async Task<UniverseEntity[]> ReadAllForUser(string userId)

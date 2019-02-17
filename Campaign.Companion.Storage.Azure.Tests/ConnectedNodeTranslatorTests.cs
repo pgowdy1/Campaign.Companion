@@ -25,24 +25,25 @@ namespace Campaign.Companion.Storage.Azure.Tests
 		public async Task Add_ShouldAddToRepo()
 		{
 			//Setup
-			ConnectedNode newConNode = new ConnectedNode("FirstNodeId", "SecondNodeId");
+			ConnectedNode newConNode = new ConnectedNode("Verse", "FirstNodeId", "SecondNodeId");
 
-			_connectedNodeRepo.Setup(m => m.Add(It.IsAny<ConnectedNodeEntity>())).ReturnsAsync(new ConnectedNodeEntity("ImTheFirstIdOfTheReturnFromTheRepo", "ImTheSecondIdOfTheReturnFromTheRepo"));
+			_connectedNodeRepo.Setup(m => m.Add(It.IsAny<ConnectedNodeEntity>()))
+				.ReturnsAsync(new ConnectedNodeEntity("Verse", "ImTheFirstIdOfTheReturnFromTheRepo", "ImTheSecondIdOfTheReturnFromTheRepo"));
 
 			//Act
 			var returnedNode = await _subject.Add(newConNode);
 
 			//Assert
-			_connectedNodeRepo.Verify(m => m.Add(It.Is<ConnectedNodeEntity>(n =>
-				n.PartitionKey == "FirstNodeId" &&
-				n.RowKey == "SecondNodeId"
-			)));
+			_connectedNodeRepo.Verify(m => m.Add(It.Is<ConnectedNodeEntity>(n => 
+				n.UniverseId == "Verse" &&
+				n.FirstNodeId == "FirstNodeId" &&
+				n.SecondNodeId == "SecondNodeId")));
 
 			returnedNode.Id.Should().Be("ImTheFirstIdOfTheReturnFromTheRepo.ImTheSecondIdOfTheReturnFromTheRepo");
 			returnedNode.FirstNode.Should().Be("ImTheFirstIdOfTheReturnFromTheRepo");
 			returnedNode.SecondNode.Should().Be("ImTheSecondIdOfTheReturnFromTheRepo");
 		}
-
+		
 		[Test]
 		public async Task ReadAll_ShouldSuccessfullyReadTableEntity()
 		{
@@ -95,8 +96,8 @@ namespace Campaign.Companion.Storage.Azure.Tests
 		{
 			ConnectedNodeEntity[] nodes = new ConnectedNodeEntity[]
 			{
-				new ConnectedNodeEntity("1stIdInTheFirstElement", "2ndIdInTheFirstElement"),
-				new ConnectedNodeEntity("1stIdInTheSecondElement", "2ndIdInTheSecondElement")
+				new ConnectedNodeEntity("Verse", "1stIdInTheFirstElement", "2ndIdInTheFirstElement"),
+				new ConnectedNodeEntity("Verse", "1stIdInTheSecondElement", "2ndIdInTheSecondElement")
 			};
 
 			return nodes;

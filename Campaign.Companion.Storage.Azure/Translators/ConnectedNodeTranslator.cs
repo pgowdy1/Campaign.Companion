@@ -15,8 +15,9 @@ namespace Campaign.Companion.Storage.Azure
 
 		public async Task<ConnectedNode> Add(ConnectedNode node)
 		{
-			ConnectedNodeEntity addedNode = await _connectedNodeRepository.Add(new ConnectedNodeEntity(node.FirstNode, node.SecondNode));
-			return Convert(addedNode);
+			var entity = Convert(node);
+			entity = await _connectedNodeRepository.Add(entity);
+			return Convert(entity);
 		}
 
 		public async Task Delete(string id)
@@ -33,7 +34,12 @@ namespace Campaign.Companion.Storage.Azure
 
 		private ConnectedNode Convert(ConnectedNodeEntity node)
 		{
-			return new ConnectedNode(node.FirstNodeId, node.SecondNodeId);
+			return new ConnectedNode(node.UniverseId, node.FirstNodeId, node.SecondNodeId);
+		}
+
+		private ConnectedNodeEntity Convert(ConnectedNode node)
+		{
+			return new ConnectedNodeEntity(node.UniverseId, node.FirstNode, node.SecondNode);
 		}
 	}
 }

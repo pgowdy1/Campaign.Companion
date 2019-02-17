@@ -33,9 +33,10 @@ namespace Campaign.Companion.Storage.Azure.Tests.Integration
 		public async Task Add_ShouldAddToTable()
 		{
 			// Act
-			ConnectedNodeEntity addedNode = await _subject.Add(new ConnectedNodeEntity("ImTheFirstNodeId", "ImTheSecondNodeId"));
+			ConnectedNodeEntity addedNode = await _subject.Add(new ConnectedNodeEntity("Verse", "ImTheFirstNodeId", "ImTheSecondNodeId"));
 
 			//Assert
+			addedNode.UniverseId.Should().Be("Verse");
 			addedNode.FirstNodeId.Should().Be("ImTheFirstNodeId");
 			addedNode.SecondNodeId.Should().Be("ImTheSecondNodeId");
 		}
@@ -43,11 +44,11 @@ namespace Campaign.Companion.Storage.Azure.Tests.Integration
 		[Test]
 		public async Task Read_ShouldRead()
 		{
-			ConnectedNodeEntity entityToSave = new ConnectedNodeEntity("ImTheFirstNodeId", "ImTheSecondNodeId");
-
+			ConnectedNodeEntity entityToSave = new ConnectedNodeEntity("Verse", "ImTheFirstNodeId", "ImTheSecondNodeId");
+			
 			var savedEntity = await _subject.Add(entityToSave);
 
-			var fetchedEntity = await _subject.Read(savedEntity.FirstNodeId, savedEntity.SecondNodeId);
+			var fetchedEntity = await _subject.Read(savedEntity.UniverseId, savedEntity.Id);
 
 			savedEntity.Should().BeEquivalentTo(fetchedEntity);
 		}
@@ -62,11 +63,11 @@ namespace Campaign.Companion.Storage.Azure.Tests.Integration
 		[Test]
 		public async Task Delete_ShouldDelete()
 		{
-			var entityToSave = new ConnectedNodeEntity("ImTheFirstNodeId", "ImTheSecondNodeId");
+			var entityToSave = new ConnectedNodeEntity("Verse", "ImTheFirstNodeId", "ImTheSecondNodeId");
 		
 			var savedEntity = await _subject.Add(entityToSave);
 
-			await _subject.Delete(savedEntity.FirstNodeId, savedEntity.SecondNodeId);
+			await _subject.Delete(savedEntity.UniverseId, savedEntity.Id);
 
 			var fetchedEntity = await _subject.Read(entityToSave.FirstNodeId, entityToSave.SecondNodeId);
 
@@ -76,13 +77,13 @@ namespace Campaign.Companion.Storage.Azure.Tests.Integration
 		[Test]
 		public async Task Update_ShouldUpdate()
 		{
-			var entityToSave = new ConnectedNodeEntity("ImTheFirstNodeId", "ImTheSecondNodeId");
+			var entityToSave = new ConnectedNodeEntity("Verse", "ImTheFirstNodeId", "ImTheSecondNodeId");
 
 			var savedEntity = await _subject.Add(entityToSave);
 
 			await _subject.Update(savedEntity);
 
-			var fetchedEntity = await _subject.Read(savedEntity.FirstNodeId, savedEntity.SecondNodeId);
+			var fetchedEntity = await _subject.Read(savedEntity.UniverseId, savedEntity.Id);
 
 			fetchedEntity.Timestamp.Should().NotBe(savedEntity.Timestamp);
 		}
@@ -90,7 +91,7 @@ namespace Campaign.Companion.Storage.Azure.Tests.Integration
 		[Test]
 		public async Task TruncateTable_ShouldEmptyOutTable()
 		{
-			var record = await _subject.Add(new ConnectedNodeEntity("ImTheFirstNodeId", "ImTheSecondNodeId"));
+			var record = await _subject.Add(new ConnectedNodeEntity("Verse", "ImTheFirstNodeId", "ImTheSecondNodeId"));
 			var recordPulled = await _subject.Read(record.PartitionKey, record.RowKey);
 			recordPulled.Should().NotBeNull();
 
@@ -105,13 +106,13 @@ namespace Campaign.Companion.Storage.Azure.Tests.Integration
 		[Test]
 		public async Task TruncateTable_ShouldAllowSubsequentAdds()
 		{
-			var record = await _subject.Add(new ConnectedNodeEntity("ImTheFirstNodeId", "ImTheSecondNodeId"));
+			var record = await _subject.Add(new ConnectedNodeEntity("Verse", "ImTheFirstNodeId", "ImTheSecondNodeId"));
 			var recordPulled = await _subject.Read(record.PartitionKey, record.RowKey);
 			recordPulled.Should().NotBeNull();
 
 			// Act
 			await _subject.TruncateTable();
-			record = await _subject.Add(new ConnectedNodeEntity("ImTheFirstNodeId", "ImTheSecondNodeId"));
+			record = await _subject.Add(new ConnectedNodeEntity("Verse", "ImTheFirstNodeId", "ImTheSecondNodeId"));
 
 			// Assert
 			recordPulled = await _subject.Read(record.PartitionKey, record.RowKey);

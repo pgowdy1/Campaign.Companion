@@ -10,7 +10,6 @@ namespace Campaign.Companion.Storage.Azure
 		public string UniverseId { get { return PartitionKey; } set { PartitionKey = value; } }
 		public string Id { get { return RowKey; } set { RowKey = value; } }
 
-
 		public UniversalEntityBase() { }
 
 		public UniversalEntityBase(string universeId)

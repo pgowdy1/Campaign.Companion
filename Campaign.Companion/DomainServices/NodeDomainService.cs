@@ -54,9 +54,9 @@ namespace Campaign.Companion.DomainServices
             return await _connectedNodeRepository.ReadAll();
         }
 
-        public async Task<ConnectedNode> ConnectNodes(string firstNode, string secondNode)
+        public async Task<ConnectedNode> ConnectNodes(string universeId, string firstNode, string secondNode)
         {
-            ConnectedNode newNode = new ConnectedNode(firstNode, secondNode);
+            ConnectedNode newNode = new ConnectedNode(universeId, firstNode, secondNode);
 
             return await _connectedNodeRepository.Add(newNode);
         }
@@ -66,27 +66,27 @@ namespace Campaign.Companion.DomainServices
 			await _connectedNodeRepository.Delete(connectionId);
         }
 
-        public async Task<NodeAudio> AddAudioFile(int nodeId, int audioId)
+        public async Task<NodeAudio> AddAudioFile(string universeId, string nodeId, string audioId)
         {
-            NodeAudio nodeAudio = new NodeAudio(nodeId, audioId);
+            NodeAudio nodeAudio = new NodeAudio(universeId, nodeId, audioId);
 
             return await _nodeAudioRepository.Add(nodeAudio);
         }
 
-        public async Task SetAudioFileShouldLoop(string nodeAudioId, bool shouldLoop)
+        public async Task SetAudioFileShouldLoop(string universeId, string nodeId, string nodeAudioId, bool shouldLoop)
         {
-            var nodeAudio = await _nodeAudioRepository.Read(nodeAudioId);
+            var nodeAudio = await _nodeAudioRepository.ReadSpecific(universeId, nodeId, nodeAudioId);
 
             nodeAudio.Loop = shouldLoop;
 
 			await _nodeAudioRepository.Update(nodeAudio);
         }
 
-        public async Task SetAudioFileShouldAutoPlay(string nodeAudioId, bool autoPlay)
+        public async Task SetAudioFileShouldAutoPlay(string universeId, string nodeId, string nodeAudioId, bool autoPlay)
         {
-            var nodeAudio = await _nodeAudioRepository.Read(nodeAudioId);
+            var nodeAudio = await _nodeAudioRepository.ReadSpecific(universeId, nodeId, nodeAudioId);
 
-            nodeAudio.AutoPlay = autoPlay;
+			nodeAudio.AutoPlay = autoPlay;
 
 			await _nodeAudioRepository.Update(nodeAudio);
         }

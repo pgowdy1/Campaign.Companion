@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Campaign.Companion.Storage
 {
-    public interface INodeAudioRepository
-    {
+	public interface INodeAudioRepository
+	{
 		Task<NodeAudio> Add(NodeAudio nodeAudio);
-        Task<NodeAudio> Read(string universeId, string nodeId, string audioFileId);
-        Task Update(NodeAudio nodeAudio);
-    }
+		Task<NodeAudio> ReadSpecific(string universeId, string nodeId, string audioFileId);
+		Task<NodeAudio[]> ReadAllForNode(string universeId, string nodeId);
+		Task Update(NodeAudio nodeAudio);
+	}
 }

@@ -7,7 +7,7 @@ namespace Campaign.Companion.Storage.Azure
 {
 	public class ConnectedNodeEntityRepository : TableStorageRepository<ConnectedNodeEntity>, IConnectedNodeEntityRepository
 	{
-		public ConnectedNodeEntityRepository(IConfigurationProvider configurationProvider) : base(configurationProvider){ }
+		public ConnectedNodeEntityRepository(IConfigurationProvider configurationProvider) : base(configurationProvider, "ConnectedNodes"){ }
 
 	}
 }

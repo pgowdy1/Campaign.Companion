@@ -6,6 +6,6 @@ namespace Campaign.Companion.Storage.Azure
 {
 	public class NodeEntityRepository : TableStorageRepository<NodeEntity>, INodeEntityRepository
 	{
-		public NodeEntityRepository(IConfigurationProvider configurationProvider) : base(configurationProvider){ }
+		public NodeEntityRepository(IConfigurationProvider configurationProvider) : base(configurationProvider, "Nodes"){ }
 	}
 }
