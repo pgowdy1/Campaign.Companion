@@ -1,0 +1,12 @@
+D:\Repositories\Campaign.Companion\Campaign.Companion.Communication.Client.SignalR\bin\Debug\netstandard2.0\Campaign.Companion.Communication.Client.dll
+D:\Repositories\Campaign.Companion\Campaign.Companion.Communication.Client.SignalR\obj\Debug\netstandard2.0\Campaign.Companion.Communication.Client.SignalR.csproj.CoreCompileInputs.cache
+D:\Repositories\Campaign.Companion\Campaign.Companion.Communication.Client.SignalR\obj\Debug\netstandard2.0\Campaign.Companion.Communication.Client.SignalR.AssemblyInfoInputs.cache
+D:\Repositories\Campaign.Companion\Campaign.Companion.Communication.Client.SignalR\obj\Debug\netstandard2.0\Campaign.Companion.Communication.Client.SignalR.AssemblyInfo.cs
+D:\Repositories\Campaign.Companion\Campaign.Companion.Communication.Client.SignalR\bin\Debug\netstandard2.0\Campaign.Companion.Communication.Client.SignalR.deps.json
+D:\Repositories\Campaign.Companion\Campaign.Companion.Communication.Client.SignalR\bin\Debug\netstandard2.0\Campaign.Companion.Communication.Client.SignalR.dll
+D:\Repositories\Campaign.Companion\Campaign.Companion.Communication.Client.SignalR\bin\Debug\netstandard2.0\Campaign.Companion.Communication.Client.SignalR.pdb
+D:\Repositories\Campaign.Companion\Campaign.Companion.Communication.Client.SignalR\bin\Debug\netstandard2.0\Campaign.Companion.Communication.Client.pdb
+D:\Repositories\Campaign.Companion\Campaign.Companion.Communication.Client.SignalR\obj\Debug\netstandard2.0\Campaign.Companion.Communication.Client.SignalR.csprojAssemblyReference.cache
+D:\Repositories\Campaign.Companion\Campaign.Companion.Communication.Client.SignalR\obj\Debug\netstandard2.0\Campaign.Companion.Communication.Client.SignalR.csproj.CopyComplete
+D:\Repositories\Campaign.Companion\Campaign.Companion.Communication.Client.SignalR\obj\Debug\netstandard2.0\Campaign.Companion.Communication.Client.SignalR.dll
+D:\Repositories\Campaign.Companion\Campaign.Companion.Communication.Client.SignalR\obj\Debug\netstandard2.0\Campaign.Companion.Communication.Client.SignalR.pdb

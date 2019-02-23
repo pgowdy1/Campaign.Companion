@@ -1,0 +1,14 @@
+D:\Repositories\Campaign.Companion\Campaign.Companion.Communication.SignalR\bin\Debug\netcoreapp2.2\Campaign.Companion.Communication.SignalR.deps.json
+D:\Repositories\Campaign.Companion\Campaign.Companion.Communication.SignalR\bin\Debug\netcoreapp2.2\Campaign.Companion.Communication.SignalR.runtimeconfig.json
+D:\Repositories\Campaign.Companion\Campaign.Companion.Communication.SignalR\bin\Debug\netcoreapp2.2\Campaign.Companion.Communication.SignalR.runtimeconfig.dev.json
+D:\Repositories\Campaign.Companion\Campaign.Companion.Communication.SignalR\bin\Debug\netcoreapp2.2\Campaign.Companion.Communication.SignalR.dll
+D:\Repositories\Campaign.Companion\Campaign.Companion.Communication.SignalR\bin\Debug\netcoreapp2.2\Campaign.Companion.Communication.SignalR.pdb
+D:\Repositories\Campaign.Companion\Campaign.Companion.Communication.SignalR\obj\Debug\netcoreapp2.2\Campaign.Companion.Communication.SignalR.csproj.CoreCompileInputs.cache
+D:\Repositories\Campaign.Companion\Campaign.Companion.Communication.SignalR\obj\Debug\netcoreapp2.2\Campaign.Companion.Communication.SignalR.RazorAssemblyInfo.cache
+D:\Repositories\Campaign.Companion\Campaign.Companion.Communication.SignalR\obj\Debug\netcoreapp2.2\Campaign.Companion.Communication.SignalR.RazorAssemblyInfo.cs
+D:\Repositories\Campaign.Companion\Campaign.Companion.Communication.SignalR\obj\Debug\netcoreapp2.2\Campaign.Companion.Communication.SignalR.AssemblyInfoInputs.cache
+D:\Repositories\Campaign.Companion\Campaign.Companion.Communication.SignalR\obj\Debug\netcoreapp2.2\Campaign.Companion.Communication.SignalR.AssemblyInfo.cs
+D:\Repositories\Campaign.Companion\Campaign.Companion.Communication.SignalR\obj\Debug\netcoreapp2.2\Campaign.Companion.Communication.SignalR.RazorTargetAssemblyInfo.cache
+D:\Repositories\Campaign.Companion\Campaign.Companion.Communication.SignalR\obj\Debug\netcoreapp2.2\Campaign.Companion.Communication.SignalR.dll
+D:\Repositories\Campaign.Companion\Campaign.Companion.Communication.SignalR\obj\Debug\netcoreapp2.2\Campaign.Companion.Communication.SignalR.pdb
+D:\Repositories\Campaign.Companion\Campaign.Companion.Communication.SignalR\obj\Debug\netcoreapp2.2\Campaign.Companion.Communication.SignalR.csprojAssemblyReference.cache

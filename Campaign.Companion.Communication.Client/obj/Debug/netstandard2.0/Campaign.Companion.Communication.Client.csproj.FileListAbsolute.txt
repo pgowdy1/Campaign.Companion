@@ -1,0 +1,8 @@
+D:\Repositories\Campaign.Companion\Campaign.Companion.Communication.Client\bin\Debug\netstandard2.0\Campaign.Companion.Communication.Client.deps.json
+D:\Repositories\Campaign.Companion\Campaign.Companion.Communication.Client\bin\Debug\netstandard2.0\Campaign.Companion.Communication.Client.dll
+D:\Repositories\Campaign.Companion\Campaign.Companion.Communication.Client\bin\Debug\netstandard2.0\Campaign.Companion.Communication.Client.pdb
+D:\Repositories\Campaign.Companion\Campaign.Companion.Communication.Client\obj\Debug\netstandard2.0\Campaign.Companion.Communication.Client.csproj.CoreCompileInputs.cache
+D:\Repositories\Campaign.Companion\Campaign.Companion.Communication.Client\obj\Debug\netstandard2.0\Campaign.Companion.Communication.Client.AssemblyInfoInputs.cache
+D:\Repositories\Campaign.Companion\Campaign.Companion.Communication.Client\obj\Debug\netstandard2.0\Campaign.Companion.Communication.Client.AssemblyInfo.cs
+D:\Repositories\Campaign.Companion\Campaign.Companion.Communication.Client\obj\Debug\netstandard2.0\Campaign.Companion.Communication.Client.dll
+D:\Repositories\Campaign.Companion\Campaign.Companion.Communication.Client\obj\Debug\netstandard2.0\Campaign.Companion.Communication.Client.pdb
