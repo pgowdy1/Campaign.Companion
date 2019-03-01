@@ -1,4 +1,5 @@
 using Campaign.Companion.Communication.Client;
+using Campaign.Companion.Communication.Client.SignalR.Hubs;
 using NUnit.Framework;
 using System;
 using System.Threading.Tasks;
@@ -7,19 +8,19 @@ namespace Campaign.Companion.Communication.SignalR.Tests.Int
 {
 	public class UniverseTests
 	{
-		UniverseClientService _universeClientService;
+		//UniverseClientService _universeClientService;
 
 		[SetUp]
 		public void Setup()
 		{
-			_universeClientService = new UniverseClientService();
+			//_universeClientService = new UniverseClientService();
 		}
 
 		[Test]
 		public async Task GetUniverseID_ReturnsUniverseId()
 		{
-			await _universeClientService.SetupReceiveUniverseId();
-			Console.WriteLine(_universeClientService._universeId);
+			var hub = new UniverseHub(null);
+			await hub.GetUniverse("13");
 		}
 	}
 }

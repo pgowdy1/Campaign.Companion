@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Campaign.Companion.Communication.Client.SignalR.Hubs;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -24,20 +19,17 @@ namespace Campaign.Companion.Communication.Client.SignalR
 		// For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
 		public void ConfigureServices(IServiceCollection services)
 		{
-			services.Configure<IISServerOptions>(options =>
+			services.AddCors(options =>
 			{
-				options.AutomaticAuthentication = false;
+				options.AddPolicy("CorsPolicy",
+					builder => builder.WithOrigins("http://localhost:4200")
+					.AllowAnyMethod()
+					.AllowAnyHeader()
+					.AllowCredentials());
 			});
 
-			services.AddCors(options => options.AddPolicy("CorsPolicy",
-				builder =>
-				{
-					builder.AllowAnyMethod().AllowAnyHeader()
-						   .WithOrigins("http://localhost:62557")
-						   .AllowCredentials();
-				}));
-
 			services.AddSignalR();
+			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,16 +39,20 @@ namespace Campaign.Companion.Communication.Client.SignalR
 			{
 				app.UseDeveloperExceptionPage();
 			}
+			else
+			{
+				app.UseHsts();
+			}
+
+			app.UseHttpsRedirection();
+			app.UseCors("CorsPolicy");
 
 			app.UseSignalR(routes =>
 			{
 				routes.MapHub<UniverseHub>("/universe");
 			});
 
-			//app.Run(async (context) =>
-			//{
-			//	await context.Response.WriteAsync("");
-			//});
+			app.UseMvc();
 		}
 	}
 }
