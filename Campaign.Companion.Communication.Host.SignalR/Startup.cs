@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Campaign.Companion.Communication.Client.SignalR
+namespace Campaign.Companion.Communication.Host.SignalR
 {
 	public class Startup
 	{

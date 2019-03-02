@@ -4,7 +4,7 @@ using System;
 using System.Threading.Tasks;
 using System.Threading;
 
-namespace Campaign.Companion.Communication.Client.SignalR
+namespace Campaign.Companion.Communication.Host.SignalR
 {
 	public class UniverseHub : Hub
 	{

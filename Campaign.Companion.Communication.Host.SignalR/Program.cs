@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace Campaign.Companion.Communication.Client.SignalR
+namespace Campaign.Companion.Communication.Host.SignalR
 {
 	public class Program
 	{

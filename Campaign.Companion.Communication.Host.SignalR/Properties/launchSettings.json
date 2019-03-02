@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Campaign.Companion.Communication.Client.SignalR": {
+    "Campaign.Companion.Communication.Host.SignalR": {
       "commandName": "Project",
       "launchBrowser": true,
       "applicationUrl": "http://localhost:5000",

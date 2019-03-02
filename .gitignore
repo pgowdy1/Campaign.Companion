@@ -47,3 +47,11 @@ Campaign\.Companion\.Communication\.SignalR/obj/
 Campaign\.Companion\.Communication\.SignalR\.Tests\.Int/bin/
 
 Campaign\.Companion\.Communication\.SignalR\.Tests\.Int/obj/
+
+Campaign\.Companion\.Communication\.Client\.SignalR\.NETCore/bin/
+
+Campaign\.Companion\.Communication\.Client\.SignalR\.NETCore/obj/
+
+Campaign\.Companion\.Communication\.Host\.SignalR/obj/
+
+Campaign\.Companion\.Communication\.Host\.SignalR/bin/
